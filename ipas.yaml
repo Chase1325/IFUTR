@@ -1,0 +1,18 @@
+anchorpose:
+  '0x6110': [0, 0, 1455]
+  '0x6115': [0, 2875, 2587]
+  '0x6117': [2875, 0, 2024]
+  '0x611e': [2875, 2875, 1057]
+dronecount: 1
+grid: {height: 5000, width: 5000}
+mode: Localize
+rosdistro: 'kinetic
+
+  '
+roslaunch:
+  uris: {host_localhost__50991: 'http://localhost:50991/'}
+rosversion: '1.12.14
+
+  '
+run_id: 75405c32-24cf-11e9-acef-0028f85b896a
+ugvcount: 0

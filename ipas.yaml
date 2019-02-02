@@ -9,10 +9,8 @@ rosversion: '1.12.14
 run_id: 75405c32-24cf-11e9-acef-0028f85b896a
 
 
-
 mode: Localize
 lightswitch: 'off'
-sample: false
 
 dronecount: 1
 ugvcount: 0
@@ -24,7 +22,7 @@ anchorpose:
   '0x6117': [2875, 0, 2024]
   '0x611e': [2875, 2875, 1057]
 
-testLocale:
-  'x': 0
-  'y': 0
-  'z': 0
+localize_test:
+  'testLocale': [0, 0, 0]
+  'sample': false
+  'reconfig': false

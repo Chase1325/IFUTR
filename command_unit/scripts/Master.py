@@ -10,6 +10,13 @@
 import rospy
 from localize_service.srv import localize_service
 
+#Script Imports
+import localization_csv_handler as csvHandler
+import localization_statistics as statsHandler
+
+#Class Imports
+from localization_statistics import SampleStats
+
 def initialize():
     rospy.init_node('command_unit', anonymous=False)
 
@@ -32,10 +39,17 @@ def run_Localize():
                 localizeData = localizeService(sampleCount) #Call service from UAV, stored as tuple of arrays
                 #localizeData Returns: {localizeData.posx, localizeData.posy, localizeData.posz}
 
-                #Then call function from localization report and pass in data
+                anchorDistance = rospy.get_param('/anchorpose/size')
+                testLocale = rospy.get_param('/localize_test/testlocale')
+
+                #Find data statistics
+                stats = SampleStats(localizeData) #Make the class
+                stats.setErr(testLocale)
+
                 #Data: LocalizeData, AnchorPositions, TestLocation
                 #Goal: Generate CSV file of sample data, sample location,
                 #   sample mean, sample variance, sample std, sample error
+                csvHandler.csv_handler(localizeData, anchorDistance, testLocale)
 
             else:
                 time.sleep(1) #Sleep while waiting

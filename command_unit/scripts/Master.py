@@ -11,11 +11,9 @@ import rospy
 from localize_service.srv import localize_service
 
 #Script Imports
-import localization_csv_handler as csvHandler
-import localization_statistics as statsHandler
-
-#Class Imports
-from localization_statistics import SampleStats
+from localization.localization_csv_handler as csvHandler
+from localization.localization_statistics as statsHandler
+from localization.localization_statistics import SampleStats
 
 def initialize():
     rospy.init_node('command_unit', anonymous=False)
@@ -79,7 +77,6 @@ def run():
 
     if(mode=='IPAS'):
         run_IPAS()
-        pass
     elif(mode=='Localize'):
         run_Localize()
     elif(mode=='Flight_Test'):

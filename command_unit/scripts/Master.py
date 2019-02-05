@@ -49,7 +49,7 @@ def run_Localize():
                 #Data: LocalizeData, AnchorPositions, TestLocation
                 #Goal: Generate CSV file of sample data, sample location,
                 #   sample mean, sample variance, sample std, sample error
-                csvHandler.csv_handler(localizeData, anchorDistance, testLocale)
+                csvHandler.csv_handler(stats, anchorDistance, testLocale)
 
             else:
                 time.sleep(1) #Sleep while waiting

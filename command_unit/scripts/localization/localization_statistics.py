@@ -22,14 +22,26 @@ class SampleStats:
         self.err = np.asarray([0, 0, 0])
         self.err_mag = 0
 
+    def getData(self):
+        return self.data
+
     def getMean(self):
         return self.mean
+
+    def getMeanMag(self):
+        return self.mean_mag
 
     def getVar(self):
         return self.var
 
+    def getVarMag(self):
+        return self.var_mag
+
     def getStd(self):
         return self.std
+
+    def getStdMag(self):
+        return self.std_mag
 
     def setErr(self, init):
         self.err = np.asarray([np.absolute(self.mean[0]-init[0]),
@@ -39,3 +51,6 @@ class SampleStats:
 
     def getErr(self):
         return self.err
+
+    def getErrMag(self):
+        return self.err_mag

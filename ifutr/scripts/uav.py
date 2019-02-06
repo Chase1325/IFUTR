@@ -78,7 +78,7 @@ def localize_serviceHandler(request):
     height = 1000
 
     pozyx = PozyxSerial(serial_port)
-    r = ReadyToLocalize(pozyx, osc_udp_client, anchors, algorithm, dimension, height, remote_id)
+    r = IPozyx2(pozyx, osc_udp_client, anchors, algorithm, dimension, height, remote_id)
     r.setup()
     while True:
         r.loop()

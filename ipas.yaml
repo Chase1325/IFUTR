@@ -10,7 +10,7 @@ run_id: 75405c32-24cf-11e9-acef-0028f85b896a
 
 
 mode: Localize
-lightswitch: 'off'
+lightswitch: true
 
 dronecount: 1
 ugvcount: 0

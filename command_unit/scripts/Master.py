@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 ###############################################################################
 #Chase St. Laurent
 #Worcester Polytechnic Institute
@@ -5,30 +6,35 @@
 #
 #MASTER Command Node
 ################################################################################
+import time
 
 #ROS Imports
 import rospy
-from localize_service.srv import localize_service
+from command_unit.srv import localize_service
 
 #Script Imports
-from localization.localization_csv_handler as csvHandler
-from localization.localization_statistics as statsHandler
+import sys
+#sys.path.insert(0, '~/catkin_ws/src/IPAS-Ros/command_unit/scripts/localization')
+#import localization.localization_csv_handler as csvHandler
+#import localization.localization_statistics as statsHandler
+from localization import localization_csv_handler, localization_statistics
 from localization.localization_statistics import SampleStats
 
 def initialize():
     rospy.init_node('command_unit', anonymous=False)
+    print('Initialized RosNode')
 
 def run_IPAS():
     pass
 
 def run_Localize():
-    while(rospy.get_param('/lightswitch')=='on'):
+    while(rospy.get_param('/lightswitch')==True):
 
-        while(rospy.get_param('/localize_test/reconfigure')==False): #Set true when done sampling
+        while(rospy.get_param('/localize_test/reconfig')==False): #Set true when done sampling
 
             #If we set sample to true, begin a new localization test
             if(rospy.get_param('/localize_test/sample')==True):
-
+		print('Wait for sample')		
                 rospy.set_param('/localize_test/sample', False) #Reset the parameter to avoid loop
 
                 sampleCount = 100 #Default Sample count for service
@@ -37,6 +43,7 @@ def run_Localize():
                 localizeData = localizeService(sampleCount) #Call service from UAV, stored as tuple of arrays
                 #localizeData Returns: {localizeData.posx, localizeData.posy, localizeData.posz}
 
+		print('got sample')
                 anchorDistance = rospy.get_param('/anchorpose/size')
                 testLocale = rospy.get_param('/localize_test/testlocale')
 
@@ -50,10 +57,11 @@ def run_Localize():
                 csvHandler.csv_handler(stats, anchorDistance, testLocale)
 
             else:
-                time.sleep(1) #Sleep while waiting
+		print('Waiting for /localize_test/sample to be set to True')
+                time.sleep(5) #Sleep while waiting
 
         #Reset parameters for next anchor configuration and new samples
-        rospy.set_param('/localize_test/reconfigure', False)
+        rospy.set_param('/localize_test/reconfig', False)
         rospy.set_param('localize_test/sample', False)
 
         #Call finalize report, which then takes all the accumulated data and

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #Populate CSV Files in structured format with localization data
 
 ############################   LIBRARIES   ############################
@@ -57,4 +58,5 @@ def csv_handler(stats, anchorSpace, testLocale):
             if(i==0):
                 writer.writerow(message)
             else:
-                writer.writerow('{},{},{}'.format(data[0][i],data[1][i],data[2][i])
+                writer.writerow('{},{},{}'.format(data[0][i],data[1][i],data[2][i]))
+

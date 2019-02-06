@@ -150,12 +150,7 @@ if __name__ == "__main__":
     if check_pypozyx_version:
         perform_latest_version_check()
 
-    pozyx.getRead(POZYX_WHO_AM_I, data, remote_id=remote_id)
-    print('who am i: 0x%0.2x' % data[0])
-    print('firmware version: 0x%0.2x' % data[1])
-    print('hardware version: 0x%0.2x' % data[2])
-    print('self test result: %s' % bin(data[3]))
-    print('error: 0x%0.2x' % data[4])
+
     # shortcut to not have to find out the port yourself
     serial_port = get_first_pozyx_serial_port()
     print(serial_port)
@@ -193,6 +188,12 @@ if __name__ == "__main__":
     height = 1000
 
     pozyx = PozyxSerial(serial_port)
+    pozyx.getRead(POZYX_WHO_AM_I, data, remote_id=remote_id)
+    print('who am i: 0x%0.2x' % data[0])
+    print('firmware version: 0x%0.2x' % data[1])
+    print('hardware version: 0x%0.2x' % data[2])
+    print('self test result: %s' % bin(data[3]))
+    print('error: 0x%0.2x' % data[4])
     r = ReadyToLocalize(pozyx, osc_udp_client, anchors, algorithm, dimension, height, remote_id)
     r.setup()
     while True:

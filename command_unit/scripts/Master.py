@@ -38,8 +38,10 @@ def run_Localize():
                 rospy.set_param('/localize_test/sample', False) #Reset the parameter to avoid loop
 
                 sampleCount = 100 #Default Sample count for service
-                rospy.wait_for_service('localize_service') #Wait for service to be ready
-                localizeService = rospy.ServiceProxy('localize_service', localize_service)
+                print('Waiting for the service')
+		rospy.wait_for_service('localize_serv') #Wait for service to be ready
+                print('Done waiting for the service')
+		localizeService = rospy.ServiceProxy('localize_serv', localize_service)
                 localizeData = localizeService(sampleCount) #Call service from UAV, stored as tuple of arrays
                 #localizeData Returns: {localizeData.posx, localizeData.posy, localizeData.posz}
 

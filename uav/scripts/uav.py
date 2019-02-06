@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+
 import rospy
 import pypozyx
 
 import IPozyx
 
-from localize_service.srv import localize_service, localize_serviceResponse
+from command_unit.srv import localize_service, localize_serviceResponse
 
 def initialize():
     rospy.init_node('UAV', anonymous=False)
@@ -13,7 +15,7 @@ def run_IPAS():
     pass
 
 def localize_serviceHandler(request):
-
+    print('Starting the handler')
     #Initialize the pozyx interface with the anchors
     anchors = rospy.get_param('/anchorpose')
     pozyx = IPozyx.IPozyx(anchors)
@@ -21,7 +23,8 @@ def localize_serviceHandler(request):
     x_buff = []
     y_buff = []
     z_buff = []
-
+    
+    print('About to gather position data')
     for i in range(100):
         pos = pozyx.getPosition()
         x_buff.append(pos[0])
@@ -32,11 +35,11 @@ def localize_serviceHandler(request):
 
 def run_Localize():
 
-    while(rospy.get_param('/lightswitch')=='on'):
+    while(rospy.get_param('/lightswitch')==True):
 
-
+	print('Waiting for a call to the service')
         #Wait for client to request service
-        serv = rospy.Service('UAV', localize_service, localize_serviceHandler)
+        serv = rospy.Service('localize_serv', localize_service, localize_serviceHandler)
         rospy.spin()
 
 def run():

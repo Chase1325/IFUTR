@@ -31,6 +31,7 @@ def localize_serviceHandler(request):
 
     # shortcut to not have to find out the port yourself
     serial_port = get_first_pozyx_serial_port()
+    print(serial_port)
     if serial_port is None:
         print("No Pozyx connected. Check your USB cable or your driver!")
 

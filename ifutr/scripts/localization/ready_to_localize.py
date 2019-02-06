@@ -11,6 +11,7 @@ from time import sleep
 
 from pypozyx import (POZYX_POS_ALG_UWB_ONLY, POZYX_3D, Coordinates, POZYX_SUCCESS, PozyxConstants, version,
                      DeviceCoordinates, PozyxSerial, get_first_pozyx_serial_port, SingleRegister, DeviceList, PozyxRegisters)
+from pypozyx import *
 from pythonosc.udp_client import SimpleUDPClient
 
 from pypozyx.tools.version_check import perform_latest_version_check
@@ -149,8 +150,14 @@ if __name__ == "__main__":
     if check_pypozyx_version:
         perform_latest_version_check()
 
+    pozyx.getRead(POZYX_WHO_AM_I, data, remote_id=remote_id)
+    print('who am i: 0x%0.2x' % data[0])
+    print('firmware version: 0x%0.2x' % data[1])
+    print('hardware version: 0x%0.2x' % data[2])
+    print('self test result: %s' % bin(data[3]))
+    print('error: 0x%0.2x' % data[4])
     # shortcut to not have to find out the port yourself
-    serial_port = get_first_pozyx_serial_port()
+    serial_port = ''/dev/#get_first_pozyx_serial_port()
     print(serial_port)
     if serial_port is None:
         print("No Pozyx connected. Check your USB cable or your driver!")

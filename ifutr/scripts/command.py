@@ -11,7 +11,7 @@ import time
 
 #ROS Imports
 import rospy
-from command_unit.srv import localize_service
+from command_unit.srv import *
 
 #Script Imports
 import sys
@@ -42,13 +42,16 @@ def run_Localize():
                 print('Waiting for the service')
 		rospy.wait_for_service('localize_serv') #Wait for service to be ready
                 print('Done waiting for the service')
+		#try:
 		localizeService = rospy.ServiceProxy('localize_serv', localize_service)
-                localizeData = localizeService(sampleCount) #Call service from UAV, stored as tuple of arrays
+                localizeData = localizeService() #Call service from UAV, stored as tuple of arrays
                 #localizeData Returns: {localizeData.posx, localizeData.posy, localizeData.posz}
-
+		#except rospy.ServiceException, e:
+		#	print('Service call failed: {}'.format(e))
 		print('got sample')
+		print(localizeData)
                 anchorDistance = rospy.get_param('/anchorpose/size')
-                testLocale = rospy.get_param('/localize_test/testlocale')
+                testLocale = rospy.get_param('/localize_test/testLocale')
 
                 #Find data statistics
                 stats = SampleStats(localizeData) #Make the class
@@ -57,7 +60,7 @@ def run_Localize():
                 #Data: LocalizeData, AnchorPositions, TestLocation
                 #Goal: Generate CSV file of sample data, sample location,
                 #   sample mean, sample variance, sample std, sample error
-                csvHandler.csv_handler(stats, anchorDistance, testLocale)
+                localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
 
             else:
 		print('Waiting for /localize_test/sample to be set to True')

@@ -8,7 +8,7 @@ import pandas as pd
 
 class SampleStats:
     def __init__(self, data):
-        self.data = [np.asarray(data[0]), np.asarray(data[1]), np.asarray(data[2])]
+        self.data = [np.asarray(data.posx), np.asarray(data.posy), np.asarray(data.posz)]
 
         self.mean = [np.mean(self.data[0]), np.mean(self.data[1]), np.mean(self.data[2])]
         self.mean_mag = np.linalg.norm(self.mean)

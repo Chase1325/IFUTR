@@ -7,7 +7,7 @@
 #MASTER Command Node
 ################################################################################
 import time
-
+###
 #ROS Imports
 import rospy
 from command_unit.srv import localize_service
@@ -34,7 +34,7 @@ def run_Localize():
 
             #If we set sample to true, begin a new localization test
             if(rospy.get_param('/localize_test/sample')==True):
-		print('Wait for sample')		
+		print('Wait for sample')
                 rospy.set_param('/localize_test/sample', False) #Reset the parameter to avoid loop
 
                 sampleCount = 100 #Default Sample count for service

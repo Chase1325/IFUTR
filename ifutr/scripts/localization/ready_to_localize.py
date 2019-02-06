@@ -157,7 +157,7 @@ if __name__ == "__main__":
     print('self test result: %s' % bin(data[3]))
     print('error: 0x%0.2x' % data[4])
     # shortcut to not have to find out the port yourself
-    serial_port = ''/dev/#get_first_pozyx_serial_port()
+    serial_port = get_first_pozyx_serial_port()
     print(serial_port)
     if serial_port is None:
         print("No Pozyx connected. Check your USB cable or your driver!")

@@ -1,8 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.2"?>
 <package format="2">
-  <name>command_unit</name>
-  <version>0.1.0</version>
-  <description>The command_unit package</description>
+  <name>ifutr</name>
+  <version>0.2.0</version>
+  <description>The ifutr package</description>
 
   <maintainer email="clstlaurent@wpi.edu">Chase St. Laurent</maintainer>
 

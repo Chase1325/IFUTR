@@ -4,7 +4,7 @@ import rospy
 import pypozyx
 
 from localization.IPozyx import IPozyx
-from localization.Ipozyx2 import IPozyx2
+from localization.IPozyx2 import IPozyx2
 from time import sleep
 
 from pypozyx import (POZYX_POS_ALG_UWB_ONLY, POZYX_3D, Coordinates, POZYX_SUCCESS, PozyxConstants, version,

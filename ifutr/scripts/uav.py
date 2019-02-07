@@ -94,9 +94,9 @@ def localize_serviceHandler(request):
     print('About to gather position data')
     for i in range(100):
         pos = r.run()
-        x_buff.append(pos[0])
-        y_buff.append(pos[1])
-        z_buff.append(pos[2])
+        x_buff.append(pos.x)
+        y_buff.append(pos.y)
+        z_buff.append(pos.z)
 
     return localize_serviceResponse(x_buff,y_buff,z_buff)
 

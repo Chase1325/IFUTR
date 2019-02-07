@@ -28,7 +28,8 @@ def csv_handler(stats, anchorSpace, testLocale):
     stdMag = stats.getStdMag()
     err = stats.getErr()
     errMag = stats.getErrMag()
-
+    print('about to write csv')
+    print(path+fileName)
     with open(path + fileName, 'wb') as writeFile:
         #Make our writer
         writer = csv.writer(writeFile)

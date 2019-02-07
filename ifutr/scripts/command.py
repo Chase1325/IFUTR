@@ -54,14 +54,15 @@ def run_Localize():
                     print(localizeData)
                     anchorDistance = rospy.get_param('/anchorpose/size')
                     testLocale = rospy.get_param('/localize_test/testLocale')
-
+                    print('about to find stats')
                     #Find data statistics
                     stats = SampleStats(localizeData) #Make the class
                     stats.setErr(testLocale)
-
+                    print('found stats')
                 #Data: LocalizeData, AnchorPositions, TestLocation
                 #Goal: Generate CSV file of sample data, sample location,
                 #   sample mean, sample variance, sample std, sample error
+                    print('about to make csv')
                     localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
                 except:
                     print('Fail')

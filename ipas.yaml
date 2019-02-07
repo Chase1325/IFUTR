@@ -1,29 +1,24 @@
+anchorpose:
+  '0x6110': [0, 0, 1455]
+  '0x6115': [0, 3000, 2587]
+  '0x6117': [3000, 3000, 2587]
+  '0x611e': [3000, 0, 1057]
+  size: 3000
+dronecount: 1
+grid: {height: 5000, width: 5000}
+lightswitch: true
+localize_test:
+  reconfig: false
+  sample: false
+  testLocale: [0, 0, 0]
+mode: Localize
 rosdistro: 'kinetic
 
   '
 roslaunch:
-  uris: {host_localhost__50991: 'http://localhost:50991/'}
+  uris: {host_130_215_127_59__64094: 'http://130.215.127.59:64094/', host_localhost__50991: 'http://localhost:50991/'}
 rosversion: '1.12.14
 
   '
 run_id: 75405c32-24cf-11e9-acef-0028f85b896a
-
-
-mode: Localize
-lightswitch: true
-
-dronecount: 1
 ugvcount: 0
-
-grid: {height: 5000, width: 5000}
-anchorpose:
-  'size': 2875
-  '0x6110': [0, 0, 1455]
-  '0x6115': [0, 2875, 2587]
-  '0x6117': [2875, 0, 2024]
-  '0x611E': [2875, 2875, 1057]
-
-localize_test:
-  'testLocale': [0, 0, 0]
-  'sample': false
-  'reconfig': false

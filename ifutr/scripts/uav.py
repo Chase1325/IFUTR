@@ -101,13 +101,12 @@ def localize_serviceHandler(request):
     return localize_serviceResponse(x_buff,y_buff,z_buff)
 
 def run_Localize():
-
     # while(rospy.get_param('/lightswitch')==True):
     print('Waiting for a call to the service')
     #Wait for client to request service
     serv = rospy.Service('localize_serv', localize_service, localize_serviceHandler)
     print('Ready for call to service')
-	rospy.spinOnce()
+    rospy.spin()
 
 def run():
     #System Mode ('IPAS', 'Localize', 'Flight_Test', 'Ground_Test')

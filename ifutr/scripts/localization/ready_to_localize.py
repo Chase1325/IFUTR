@@ -189,7 +189,7 @@ if __name__ == "__main__":
 
     pozyx = PozyxSerial(serial_port)
     data = [0,0,0,0,0]
-    pozyx.getRead(PozyxRegisters.POZYX_WHO_AM_I, data, remote_id=remote_id)
+    pozyx.getRead(PozyxRegisters.WHO_AM_I, data, remote_id=remote_id)
     print('who am i: 0x%0.2x' % data[0])
     print('firmware version: 0x%0.2x' % data[1])
     print('hardware version: 0x%0.2x' % data[2])

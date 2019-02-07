@@ -81,8 +81,8 @@ def localize_serviceHandler(request):
     pozyx = PozyxSerial(serial_port)
     r = IPozyx2(pozyx, osc_udp_client, anchors, algorithm, dimension, height, remote_id)
     r.setup()
-    while True:
-        r.loop()
+    #while True:
+    #    r.loop()
 
 
     #pozyx = IPozyx(anchors)
@@ -93,7 +93,7 @@ def localize_serviceHandler(request):
 
     print('About to gather position data')
     for i in range(100):
-        pos = pozyx.getPosition()
+        pos = r.run()
         x_buff.append(pos[0])
         y_buff.append(pos[1])
         z_buff.append(pos[2])

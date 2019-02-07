@@ -40,15 +40,17 @@ class IPozyx2(object):
         self.setAnchorsManual(save_to_flash=False)
         self.printPublishConfigurationResult()
 
-    def loop(self):
+    def run(self):
         """Performs positioning and displays/exports the results."""
         position = Coordinates()
         status = self.pozyx.doPositioning(
             position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
         if status == POZYX_SUCCESS:
-            self.printPublishPosition(position)
+            return position
+            #self.printPublishPosition(position)
         else:
-            self.printPublishErrorCode("positioning")
+            pass
+            #self.printPublishErrorCode("positioning")
 
     def printPublishPosition(self, position):
         """Prints the Pozyx's position and possibly sends it as a OSC packet"""

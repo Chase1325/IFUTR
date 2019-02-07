@@ -30,33 +30,43 @@ def csv_handler(stats, anchorSpace, testLocale):
     errMag = stats.getErrMag()
     print('about to write csv')
     print(fileName)
-    with open(fileName, 'wb') as writeFile:
+    with open(fileName, 'w') as writeFile:
         #Make our writer
         print('Made CSV File')
         writer = csv.writer(writeFile)
 
         #Make Headers and write them
-        dataStr='DataX, DataY, DataZ,'
-        trueStr='True X, True Y, True Z,'
-        meanStr='Mean X, Mean Y, Mean Z, Mean Mag,'
-        varStr='Var X, Var Y, Var Z, Var Mag,'
-        stdStr='Std X, Std Y, Std Z, Std Mag,'
-        errStr='Err X, Err Y, Err Z, Err Mag'
+        #dataStr="DataX, DataY, DataZ,"
+        #trueStr="True X, True Y, True Z,"
+        #meanStr="Mean X, Mean Y, Mean Z, Mean Mag,"
+        #varStr="Var X, Var Y, Var Z, Var Mag,"
+        #stdStr="Std X, Std Y, Std Z, Std Mag,"
+        #errStr="Err X, Err Y, Err Z, Err Mag"
 
-        message = (dataStr + trueStr + meanStr + varStr + stdStr + errStr)
+        #message = (dataStr + trueStr + meanStr + varStr + stdStr + errStr)
+        message = ['DataX', 'DataY', 'DataZ', 'TrueX', 'TrueY', 'TrueZ',
+                   'MeanX', 'MeanY', 'MeanZ','Mean Mag', 'Var X', 'Var Y',
+                   'Var Z', 'Var Mag', 'Std X', 'Std Y', 'Std Z', 'Std Mag',
+                   'Err X', 'Err Y', 'Err Z', 'Err Mag']
         writer.writerow(message)
 
         #Write Statistical data
-        trueStr='{},{},{},'.format(testLocale[0],testLocale[1],testLocale[2])
-        meanStr='{},{},{},{},'.format(mean[0],mean[1],mean[2], meanMag)
-        varStr='{},{},{},{},'.format(var[0],var[1],var[2], varMag)
-        stdStr='{},{},{},{},'.format(std[0],std[1],std[2], stdMag)
-        errStr='{},{},{},{},'.format(err[0],err[1],err[2], errMag)
-        dataStr='{},{},{}'.format(data[0][0], data[1][0], data[2][0])
-        message = (dataStr + trueStr + meanStr + varStr + stdStr + errStr)
+        print(testLocale[0])
+        #trueStr='{},{},{},'.format(testLocale[0],testLocale[1],testLocale[2])
+        #meanStr='{},{},{},{},'.format(mean[0],mean[1],mean[2], meanMag)
+        #varStr='{},{},{},{},'.format(var[0],var[1],var[2], varMag)
+        #stdStr='{},{},{},{},'.format(std[0],std[1],std[2], stdMag)
+        #errStr='{},{},{},{},'.format(err[0],err[1],err[2], errMag)
+        #dataStr='{},{},{}'.format(data[0][0], data[1][0], data[2][0])
+        #message = (dataStr + trueStr + meanStr + varStr + stdStr + errStr)
+
+        message = [testLocale[0], testLocale[1], testLocale[2],
+                   mean[0],mean[1],mean[2],meanMag,var[0],var[1],var[2],varMag,
+                   std[0],std[1],std[2],stdMag,err[0],err[1],err[2],errMag,
+                   data[0][0],data[1][0],data[2][0]]
 
         for i in range(len(data[0])):
             if(i==0):
                 writer.writerow(message)
             else:
-                writer.writerow('{},{},{}'.format(data[0][i],data[1][i],data[2][i]))
+                writer.writerow([data[0][i],data[1][i],data[2][i]])

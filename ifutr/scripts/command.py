@@ -63,7 +63,8 @@ def run_Localize():
                 #Goal: Generate CSV file of sample data, sample location,
                 #   sample mean, sample variance, sample std, sample error
                     localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
-
+                except:
+                    print('Fail')
             else:
                 print('Waiting for /localize_test/sample to be set to True')
                 time.sleep(5) #Sleep while waiting

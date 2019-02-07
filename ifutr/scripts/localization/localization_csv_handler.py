@@ -29,7 +29,7 @@ def csv_handler(stats, anchorSpace, testLocale):
     err = stats.getErr()
     errMag = stats.getErrMag()
     print('about to write csv')
-    print(path+fileName)
+    print(fileName)
     with open(fileName, 'wb') as writeFile:
         #Make our writer
         print('Made CSV File')

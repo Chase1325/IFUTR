@@ -16,7 +16,7 @@ def csv_handler(stats, anchorSpace, testLocale):
                                                              date.month, date.day,
                                                              anchorSpace, testLocale[0],
                                                              testLocale[1],testLocale[2])
-    path = '~/catkin_ws/src/IPAS-Ros/ifutr/scripts/localization/reports/CSV/ungenerated/'
+    #path = '~/catkin_ws/src/IPAS-Ros/ifutr/scripts/localization/reports/CSV/ungenerated/'
 
     #Statistics variables pulled for ease of use
     data = stats.getData()
@@ -30,7 +30,7 @@ def csv_handler(stats, anchorSpace, testLocale):
     errMag = stats.getErrMag()
     print('about to write csv')
     print(path+fileName)
-    with open(path + fileName, 'wb') as writeFile:
+    with open(fileName, 'wb') as writeFile:
         #Make our writer
         print('Made CSV File')
         writer = csv.writer(writeFile)

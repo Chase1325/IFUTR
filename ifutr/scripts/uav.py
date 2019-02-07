@@ -67,9 +67,9 @@ def localize_serviceHandler(request):
                                                   anchors.get('0x6117')[1],
                                                   anchors.get('0x6117')[2])),
                     DeviceCoordinates(0x611e, 1,
-                                      Coordinates(anchors.get('0x611E')[0],
-                                                  anchors.get('0x611E')[1],
-                                                  anchors.get('0x611E')[2]))]
+                                      Coordinates(anchors.get('0x611e')[0],
+                                                  anchors.get('0x611e')[1],
+                                                  anchors.get('0x611e')[2]))]
 
     # positioning algorithm to use, other is PozyxConstants.POSITIONING_ALGORITHM_TRACKING
     algorithm = PozyxConstants.POSITIONING_ALGORITHM_UWB_ONLY

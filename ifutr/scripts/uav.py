@@ -92,11 +92,17 @@ def localize_serviceHandler(request):
     z_buff = []
 
     print('About to gather position data')
-    for i in range(100):
-        pos = r.run()
-        x_buff.append(pos.x)
-        y_buff.append(pos.y)
-        z_buff.append(pos.z)
+    i=0
+    while(i<100):
+        try:
+            pos = r.run()
+            x_buff.append(pos.x)
+            y_buff.append(pos.y)
+            z_buff.append(pos.z)
+
+            i+=1
+        except:
+            pass
 
     return localize_serviceResponse(x_buff,y_buff,z_buff)
 

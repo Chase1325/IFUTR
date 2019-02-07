@@ -60,10 +60,10 @@ def csv_handler(stats, anchorSpace, testLocale):
         #dataStr='{},{},{}'.format(data[0][0], data[1][0], data[2][0])
         #message = (dataStr + trueStr + meanStr + varStr + stdStr + errStr)
 
-        message = [testLocale[0], testLocale[1], testLocale[2],
+        message = [data[0][0],data[1][0],data[2][0],
+                   testLocale[0], testLocale[1], testLocale[2],
                    mean[0],mean[1],mean[2],meanMag,var[0],var[1],var[2],varMag,
-                   std[0],std[1],std[2],stdMag,err[0],err[1],err[2],errMag,
-                   data[0][0],data[1][0],data[2][0]]
+                   std[0],std[1],std[2],stdMag,err[0],err[1],err[2],errMag]
 
         for i in range(len(data[0])):
             if(i==0):

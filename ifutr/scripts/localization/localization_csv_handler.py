@@ -12,11 +12,11 @@ import numpy as np
 def csv_handler(stats, anchorSpace, testLocale):
     date = datetime.datetime.now()
 
-    fileName = ('{}_{}_{}_Anch={}_Test={}_{}_{}.csv').format(date.year,
+    fileName = ('{}_{}_{}_Anch-{}_Test-{}_{}_{}.csv').format(date.year,
                                                              date.month, date.day,
                                                              anchorSpace, testLocale[0],
                                                              testLocale[1],testLocale[2])
-    path = 'reports/CSV/ungenerated/'
+    path = '/reports/CSV/ungenerated/'
 
     #Statistics variables pulled for ease of use
     data = stats.getData()
@@ -32,6 +32,7 @@ def csv_handler(stats, anchorSpace, testLocale):
     print(path+fileName)
     with open(path + fileName, 'wb') as writeFile:
         #Make our writer
+        print('Made CSV File')
         writer = csv.writer(writeFile)
 
         #Make Headers and write them

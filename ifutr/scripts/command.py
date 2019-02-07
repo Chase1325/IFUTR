@@ -45,24 +45,24 @@ def run_Localize():
                 try:
                     localizeService = rospy.ServiceProxy('localize_serv', localize_service)
                     print('Try worked')
-                localizeData = localizeService() #Call service from UAV, stored as tuple of arrays
+                    localizeData = localizeService() #Call service from UAV, stored as tuple of arrays
                 #localizeData Returns: {localizeData.posx, localizeData.posy, localizeData.posz}
 
                 #except rospy.ServiceException, e:
 		        #	print('Service call failed: {}'.format(e))
-                print('got sample')
-                print(localizeData)
-                anchorDistance = rospy.get_param('/anchorpose/size')
-                testLocale = rospy.get_param('/localize_test/testLocale')
+                    print('got sample')
+                    print(localizeData)
+                    anchorDistance = rospy.get_param('/anchorpose/size')
+                    testLocale = rospy.get_param('/localize_test/testLocale')
 
-                #Find data statistics
-                stats = SampleStats(localizeData) #Make the class
-                stats.setErr(testLocale)
+                    #Find data statistics
+                    stats = SampleStats(localizeData) #Make the class
+                    stats.setErr(testLocale)
 
                 #Data: LocalizeData, AnchorPositions, TestLocation
                 #Goal: Generate CSV file of sample data, sample location,
                 #   sample mean, sample variance, sample std, sample error
-                localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
+                    localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
 
             else:
 		              print('Waiting for /localize_test/sample to be set to True')

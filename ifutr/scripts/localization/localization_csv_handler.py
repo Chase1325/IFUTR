@@ -16,7 +16,7 @@ def csv_handler(stats, anchorSpace, testLocale):
                                                              date.month, date.day,
                                                              anchorSpace, testLocale[0],
                                                              testLocale[1],testLocale[2])
-    path = '/reports/CSV/ungenerated/'
+    path = '~/catkin_ws/src/IPAS-Ros/ifutr/scripts/localization/reports/CSV/ungenerated/'
 
     #Statistics variables pulled for ease of use
     data = stats.getData()

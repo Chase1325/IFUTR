@@ -65,8 +65,8 @@ def run_Localize():
                     localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
 
             else:
-		              print('Waiting for /localize_test/sample to be set to True')
-                      time.sleep(5) #Sleep while waiting
+                print('Waiting for /localize_test/sample to be set to True')
+                time.sleep(5) #Sleep while waiting
 
         #Reset parameters for next anchor configuration and new samples
         rospy.set_param('/localize_test/reconfig', False)

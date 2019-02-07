@@ -10,7 +10,7 @@ parameters and upload this sketch. Watch the coordinates change as you move your
 from time import sleep
 
 from pypozyx import (POZYX_POS_ALG_UWB_ONLY, POZYX_3D, Coordinates, POZYX_SUCCESS, PozyxConstants, version,
-                     DeviceCoordinates, PozyxSerial, get_first_pozyx_serial_port, SingleRegister, DeviceList, PozyxRegisters, POZYX_WHO_AM_I)
+                     DeviceCoordinates, PozyxSerial, get_first_pozyx_serial_port, SingleRegister, DeviceList, PozyxRegisters)
 from pypozyx import *
 from pythonosc.udp_client import SimpleUDPClient
 
@@ -188,8 +188,8 @@ if __name__ == "__main__":
     height = 1000
 
     pozyx = PozyxSerial(serial_port)
-    data = []
-    pozyx.getRead(POZYX_WHO_AM_I, data, remote_id=remote_id)
+    data = [0,0,0,0,0]
+    pozyx.getRead(PozyxRegisters.POZYX_WHO_AM_I, data, remote_id=remote_id)
     print('who am i: 0x%0.2x' % data[0])
     print('firmware version: 0x%0.2x' % data[1])
     print('hardware version: 0x%0.2x' % data[2])

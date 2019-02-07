@@ -175,10 +175,10 @@ if __name__ == "__main__":
         osc_udp_client = SimpleUDPClient(ip, network_port)
 
     # necessary data for calibration, change the IDs and coordinates yourself according to your measurement
-    anchors = [DeviceCoordinates(0x6110, 1, Coordinates(0, 0, 2790)),
-               DeviceCoordinates(0x6115, 1, Coordinates(10490, 0, 2790)),
-               DeviceCoordinates(0x6117, 1, Coordinates(-405, 6000, 2790)),
-               DeviceCoordinates(0x611e, 1, Coordinates(10490, 6500, 2790))]
+    anchors = [DeviceCoordinates(0x6110, 1, Coordinates(2875, 0, 1455)),
+               DeviceCoordinates(0x6115, 1, Coordinates(0, 2875, 2587)),
+               DeviceCoordinates(0x6117, 1, Coordinates(0, 0, 2024)),
+               DeviceCoordinates(0x611e, 1, Coordinates(2875, 2875, 1057))]
 
     # positioning algorithm to use, other is PozyxConstants.POSITIONING_ALGORITHM_TRACKING
     algorithm = PozyxConstants.POSITIONING_ALGORITHM_UWB_ONLY

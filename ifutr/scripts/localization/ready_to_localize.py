@@ -188,13 +188,13 @@ if __name__ == "__main__":
     height = 1000
 
     pozyx = PozyxSerial(serial_port)
-    data = [0,0,0,0,0]
-    pozyx.getRead(PozyxRegisters.WHO_AM_I, data, remote_id=remote_id)
-    print('who am i: 0x%0.2x' % data[0])
-    print('firmware version: 0x%0.2x' % data[1])
-    print('hardware version: 0x%0.2x' % data[2])
-    print('self test result: %s' % bin(data[3]))
-    print('error: 0x%0.2x' % data[4])
+    #data = [0,0,0,0,0]
+    #pozyx.getRead(PozyxRegisters.WHO_AM_I, data, remote_id=remote_id)
+    #print('who am i: 0x%0.2x' % data[0])
+    #print('firmware version: 0x%0.2x' % data[1])
+    #print('hardware version: 0x%0.2x' % data[2])
+    #print('self test result: %s' % bin(data[3]))
+    #print('error: 0x%0.2x' % data[4])
     r = ReadyToLocalize(pozyx, osc_udp_client, anchors, algorithm, dimension, height, remote_id)
     r.setup()
     while True:

@@ -16,7 +16,7 @@ def csv_handler(stats, anchorSpace, testLocale):
                                                              date.month, date.day,
                                                              anchorSpace, testLocale[0],
                                                              testLocale[1],testLocale[2])
-    #path = '~/catkin_ws/src/IPAS-Ros/ifutr/scripts/localization/reports/CSV/ungenerated/'
+    path = 'ifutr/scripts/localization/reports/CSV/ungenerated/'
 
     #Statistics variables pulled for ease of use
     data = stats.getData()
@@ -30,20 +30,11 @@ def csv_handler(stats, anchorSpace, testLocale):
     errMag = stats.getErrMag()
     print('about to write csv')
     print(fileName)
-    with open(fileName, 'w') as writeFile:
+    with open(path+fileName, 'w') as writeFile:
         #Make our writer
         print('Made CSV File')
         writer = csv.writer(writeFile)
 
-        #Make Headers and write them
-        #dataStr="DataX, DataY, DataZ,"
-        #trueStr="True X, True Y, True Z,"
-        #meanStr="Mean X, Mean Y, Mean Z, Mean Mag,"
-        #varStr="Var X, Var Y, Var Z, Var Mag,"
-        #stdStr="Std X, Std Y, Std Z, Std Mag,"
-        #errStr="Err X, Err Y, Err Z, Err Mag"
-
-        #message = (dataStr + trueStr + meanStr + varStr + stdStr + errStr)
         message = ['DataX', 'DataY', 'DataZ', 'TrueX', 'TrueY', 'TrueZ',
                    'MeanX', 'MeanY', 'MeanZ','Mean Mag', 'Var X', 'Var Y',
                    'Var Z', 'Var Mag', 'Std X', 'Std Y', 'Std Z', 'Std Mag',
@@ -52,13 +43,6 @@ def csv_handler(stats, anchorSpace, testLocale):
 
         #Write Statistical data
         print(testLocale[0])
-        #trueStr='{},{},{},'.format(testLocale[0],testLocale[1],testLocale[2])
-        #meanStr='{},{},{},{},'.format(mean[0],mean[1],mean[2], meanMag)
-        #varStr='{},{},{},{},'.format(var[0],var[1],var[2], varMag)
-        #stdStr='{},{},{},{},'.format(std[0],std[1],std[2], stdMag)
-        #errStr='{},{},{},{},'.format(err[0],err[1],err[2], errMag)
-        #dataStr='{},{},{}'.format(data[0][0], data[1][0], data[2][0])
-        #message = (dataStr + trueStr + meanStr + varStr + stdStr + errStr)
 
         message = [data[0][0],data[1][0],data[2][0],
                    testLocale[0], testLocale[1], testLocale[2],

@@ -4,6 +4,7 @@ anchorpose:
   '0x6117': [3000, 3000, 2587]
   '0x611e': [3000, 0, 1057]
   size: 3000
+  count: 4
 dronecount: 1
 grid: {height: 5000, width: 5000}
 lightswitch: true

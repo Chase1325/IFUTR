@@ -24,27 +24,27 @@ def localize_serviceHandler(request):
     print('Starting the handler')
 
     #change the IDs and coordinates yourself according to your measurement
-    anchors = rospy.get_param('/anchorpose')
+    #anchors = rospy.get_param('/anchorpose')
 
-    r = IPozyx(anchors)
-    r.setup()
+    #r = IPozyx(anchors)
+    #r.setup()
 
     x_buff = []
     y_buff = []
     z_buff = []
 
-    print('About to gather position data')
-    i=0
-    while(i<100):
-        try:
-            pos = r.run()
-            x_buff.append(pos.x)
-            y_buff.append(pos.y)
-            z_buff.append(pos.z)
+    #print('About to gather position data')
+    #i=0
+    #while(i<100):
+    #    try:
+    #        pos = r.run()
+    #        x_buff.append(pos.x)
+    #        y_buff.append(pos.y)
+    #        z_buff.append(pos.z)
 
-            i+=1
-        except:
-            pass
+    #        i+=1
+    #    except:
+    #        pass
 
     return localize_serviceResponse(x_buff,y_buff,z_buff)
     #return {'posx': x_buff, 'posy': y_buff, 'posz': z_buff}
@@ -57,7 +57,6 @@ def run_Localize():
 def run_FlightTest():
     #Flight test updates drone pose inside the workspace
     #by user-sent pose commands
-
     pass
 
 def run():

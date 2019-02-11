@@ -55,8 +55,8 @@ def run_Localize():
                         #{localizeData.posx, localizeData.posy, localizeData.posz}
                         print('About to get data')
                         localizeService = rospy.ServiceProxy('localize_serv', localize_service)
-                        req = localize_serviceRequest()
-                        localizeData = localizeService(req)
+                        #req = localize_serviceRequest()
+                        localizeData = localizeService()
                         print('Got data')
 
                         anchorDistance = rospy.get_param('/anchorpose/size')

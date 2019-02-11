@@ -45,17 +45,16 @@ def run_Localize():
             #If we set sample to true, begin a new localization test
             if(rospy.get_param('/localize_test/sample')==True):
                 rospy.set_param('/localize_test/sample', False) #Reset the parameter to avoid loop
-                i=0
-                #Try 100 times
-                while(i<100):
-                    try:
+                try:
                         #Call service from UAV, stored as tuple of arrays
                         #localizeData Returns:
                         #{localizeData.posx, localizeData.posy, localizeData.posz}
                         print('About to get data')
                         rospy.wait_for_service('localize_serv') #Wait for service to be ready
+                        print('Done waiting')
                         localizeService = rospy.ServiceProxy('localize_serv', localize_service)
                         #req = localize_serviceRequest()
+                        print('About to grab')
                         localizeData = localizeService()
                         print('Got data')
 
@@ -71,9 +70,9 @@ def run_Localize():
                         #      sample mean, sample variance, sample std, sample error
                         localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
                         i=100
-                    except:
+                except:
                         print('Fail')
-                        i+=1
+
             else:
                 print('Waiting for /localize_test/sample to be set to True')
                 time.sleep(3) #Sleep while waiting

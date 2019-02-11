@@ -36,8 +36,8 @@ def run_Localize():
         print('Done waiting for the service')
 
         print('Creating Service Proxy')
-        localizeService = rospy.ServiceProxy('localize_serv', localize_service, persistent=True)
-        #localizeService = rospy.ServiceProxy('localize_serv', localize_service)
+        #localizeService = rospy.ServiceProxy('localize_serv', localize_service, persistent=True)
+        localizeService = rospy.ServiceProxy('localize_serv', localize_service)
         print('Made Service Proxy, persistent for multiple calls')
 
         while(rospy.get_param('/localize_test/reconfig')==False): #Set true when done sampling

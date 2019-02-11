@@ -46,28 +46,32 @@ def run_Localize():
             if(rospy.get_param('/localize_test/sample')==True):
                 print('Wait for sample')
                 rospy.set_param('/localize_test/sample', False) #Reset the parameter to avoid loop
+                i=0
+                #Try 100 times
+                while(i<100):
+                    try:
+                        #Call service from UAV, stored as tuple of arrays
+                        #localizeData Returns:
+                        #{localizeData.posx, localizeData.posy, localizeData.posz}
+                        print('About to get data')
+                        localizeData = localizeService()
+                        print('Got data')
 
-                try:
-                    #Call service from UAV, stored as tuple of arrays
-                    #localizeData Returns:
-                    #{localizeData.posx, localizeData.posy, localizeData.posz}
-                    print('About to get data')
-                    localizeData = localizeService()
-                    print('Got data')
+                        anchorDistance = rospy.get_param('/anchorpose/size')
+                        testLocale = rospy.get_param('/localize_test/testLocale')
 
-                    anchorDistance = rospy.get_param('/anchorpose/size')
-                    testLocale = rospy.get_param('/localize_test/testLocale')
+                        #Find data statistics
+                        stats = SampleStats(localizeData) #Make the class
+                        stats.setErr(testLocale)
 
-                    #Find data statistics
-                    stats = SampleStats(localizeData) #Make the class
-                    stats.setErr(testLocale)
-
-                    #Data: LocalizeData, AnchorPositions, TestLocation
-                    #Goal: Generate CSV file of sample data, sample location,
-                    #      sample mean, sample variance, sample std, sample error
-                    localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
-                except:
-                    print('Fail')
+                        #Data: LocalizeData, AnchorPositions, TestLocation
+                        #Goal: Generate CSV file of sample data, sample location,
+                        #      sample mean, sample variance, sample std, sample error
+                        localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
+                        i=100
+                    except:
+                        print('Fail')
+                        i+=1
             else:
                 print('Waiting for /localize_test/sample to be set to True')
                 time.sleep(3) #Sleep while waiting

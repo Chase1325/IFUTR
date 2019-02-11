@@ -32,7 +32,7 @@ def run_Localize():
     while(rospy.get_param('/lightswitch')==True):
 
         print('Waiting for the service')
-        rospy.wait_for_service('localize_serv') #Wait for service to be ready
+        #rospy.wait_for_service('localize_serv') #Wait for service to be ready
         print('Done waiting for the service')
 
         print('Creating Service Proxy')
@@ -44,7 +44,6 @@ def run_Localize():
 
             #If we set sample to true, begin a new localization test
             if(rospy.get_param('/localize_test/sample')==True):
-                print('Wait for sample')
                 rospy.set_param('/localize_test/sample', False) #Reset the parameter to avoid loop
                 i=0
                 #Try 100 times
@@ -54,6 +53,7 @@ def run_Localize():
                         #localizeData Returns:
                         #{localizeData.posx, localizeData.posy, localizeData.posz}
                         print('About to get data')
+                        rospy.wait_for_service('localize_serv') #Wait for service to be ready
                         localizeService = rospy.ServiceProxy('localize_serv', localize_service)
                         #req = localize_serviceRequest()
                         localizeData = localizeService()

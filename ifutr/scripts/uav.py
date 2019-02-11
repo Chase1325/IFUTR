@@ -51,7 +51,9 @@ def localize_serviceHandler(request):
 
 def run_Localize():
     #Wait for client to request service
+    print('Creating service')
     serv = rospy.Service('localize_serv', localize_service, localize_serviceHandler)
+    print('Service Created')
     rospy.spin()
 
 def run_FlightTest():

@@ -8,7 +8,6 @@ from time import sleep
 
 from pypozyx import (POZYX_POS_ALG_UWB_ONLY, POZYX_3D, Coordinates, POZYX_SUCCESS, PozyxConstants, version,
                      DeviceCoordinates, PozyxSerial, get_first_pozyx_serial_port, SingleRegister, DeviceList, PozyxRegisters)
-from pythonosc.udp_client import SimpleUDPClient
 
 from pypozyx.tools.version_check import perform_latest_version_check
 
@@ -51,15 +50,22 @@ def localize_serviceHandler(request):
     return localize_serviceResponse(x_buff,y_buff,z_buff)
 
 def run_Localize():
-    # while(rospy.get_param('/lightswitch')==True):
     print('Waiting for a call to the service')
     #Wait for client to request service
     serv = rospy.Service('localize_serv', localize_service, localize_serviceHandler)
     print('Ready for call to service')
     rospy.spin()
 
+
+def run_FlightTest():
+    #Flight test updates drone pose inside the workspace
+    #by user-sent pose commands
+
+    pass
+
 def run():
     #System Mode ('IPAS', 'Localize', 'Flight_Test', 'Ground_Test')
+    #Selected mode determined from rosparam values
     mode = rospy.get_param('/mode')
 
     if(mode=='IPAS'):

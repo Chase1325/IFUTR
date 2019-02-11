@@ -31,6 +31,14 @@ def run_IPAS():
 def run_Localize():
     while(rospy.get_param('/lightswitch')==True):
 
+        print('Waiting for the service')
+        rospy.wait_for_service('localize_serv') #Wait for service to be ready
+        print('Done waiting for the service')
+
+        print('Creating Service Proxy')
+        localizeService = rospy.ServiceProxy('localize_serv', localize_service, persistent=True)
+        print('Made Service Proxy, persistent for multiple calls')
+
         while(rospy.get_param('/localize_test/reconfig')==False): #Set true when done sampling
 
             #If we set sample to true, begin a new localization test
@@ -38,31 +46,22 @@ def run_Localize():
                 print('Wait for sample')
                 rospy.set_param('/localize_test/sample', False) #Reset the parameter to avoid loop
 
-                sampleCount = 100 #Default Sample count for service
-                print('Waiting for the service')
-                rospy.wait_for_service('localize_serv') #Wait for service to be ready
-                print('Done waiting for the service')
                 try:
-                    localizeService = rospy.ServiceProxy('localize_serv', localize_service)
-                    print('Try worked')
-                    localizeData = localizeService() #Call service from UAV, stored as tuple of arrays
-                #localizeData Returns: {localizeData.posx, localizeData.posy, localizeData.posz}
+                    #Call service from UAV, stored as tuple of arrays
+                    #localizeData Returns:
+                    #{localizeData.posx, localizeData.posy, localizeData.posz}
+                    localizeData = localizeService()
 
-                #except rospy.ServiceException, e:
-		        #	print('Service call failed: {}'.format(e))
-                    print('got sample')
-                    print(localizeData)
                     anchorDistance = rospy.get_param('/anchorpose/size')
                     testLocale = rospy.get_param('/localize_test/testLocale')
-                    print('about to find stats')
+
                     #Find data statistics
                     stats = SampleStats(localizeData) #Make the class
                     stats.setErr(testLocale)
-                    print('found stats')
-                #Data: LocalizeData, AnchorPositions, TestLocation
-                #Goal: Generate CSV file of sample data, sample location,
-                #   sample mean, sample variance, sample std, sample error
-                    print('about to make csv')
+
+                    #Data: LocalizeData, AnchorPositions, TestLocation
+                    #Goal: Generate CSV file of sample data, sample location,
+                    #      sample mean, sample variance, sample std, sample error
                     localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
                 except:
                     print('Fail')
@@ -73,6 +72,8 @@ def run_Localize():
         #Reset parameters for next anchor configuration and new samples
         rospy.set_param('/localize_test/reconfig', False)
         rospy.set_param('localize_test/sample', False)
+
+        localizeService.close()#Close persistent connection
 
         #Call finalize report, which then takes all the accumulated data and
         #does Matplotlib to graphically output the results for configuration samples

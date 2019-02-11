@@ -50,7 +50,9 @@ def run_Localize():
                     #Call service from UAV, stored as tuple of arrays
                     #localizeData Returns:
                     #{localizeData.posx, localizeData.posy, localizeData.posz}
+                    print('About to get data')
                     localizeData = localizeService()
+                    print('Got data')
 
                     anchorDistance = rospy.get_param('/anchorpose/size')
                     testLocale = rospy.get_param('/localize_test/testLocale')

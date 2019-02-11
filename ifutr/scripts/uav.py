@@ -23,7 +23,6 @@ def run_IPAS():
 def localize_serviceHandler(request):
     print('Starting the handler')
 
-    # necessary data for calibration,
     #change the IDs and coordinates yourself according to your measurement
     anchors = rospy.get_param('/anchorpose')
 
@@ -47,16 +46,13 @@ def localize_serviceHandler(request):
         except:
             pass
 
-    #return localize_serviceResponse(x_buff,y_buff,z_buff)
-    return {'posx': x_buff, 'posy': y_buff, 'posz': z_buff}
+    return localize_serviceResponse(x_buff,y_buff,z_buff)
+    #return {'posx': x_buff, 'posy': y_buff, 'posz': z_buff}
 
 def run_Localize():
-    print('Waiting for a call to the service')
     #Wait for client to request service
     serv = rospy.Service('localize_serv', localize_service, localize_serviceHandler)
-    print('Ready for call to service')
-    serv.spin()
-
+    rospy.spin()
 
 def run_FlightTest():
     #Flight test updates drone pose inside the workspace

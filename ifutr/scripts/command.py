@@ -36,8 +36,8 @@ def run_Localize():
         print('Done waiting for the service')
 
         print('Creating Service Proxy')
-        #localizeService = rospy.ServiceProxy('localize_serv', localize_service, persistent=True)
-        localizeService = rospy.ServiceProxy('localize_serv', localize_service)
+        localizeService = rospy.ServiceProxy('localize_serv', localize_service, persistent=True)
+        #localizeService = rospy.ServiceProxy('localize_serv', localize_service)
         print('Made Service Proxy, persistent for multiple calls')
 
         while(rospy.get_param('/localize_test/reconfig')==False): #Set true when done sampling
@@ -52,7 +52,7 @@ def run_Localize():
                     #localizeData Returns:
                     #{localizeData.posx, localizeData.posy, localizeData.posz}
                     print('About to get data')
-                    localizeData = localizeService(100)
+                    localizeData = localizeService()
                     print('Got data')
 
                     anchorDistance = rospy.get_param('/anchorpose/size')
@@ -70,7 +70,7 @@ def run_Localize():
                     print('Fail')
             else:
                 print('Waiting for /localize_test/sample to be set to True')
-                time.sleep(5) #Sleep while waiting
+                time.sleep(3) #Sleep while waiting
 
         #Reset parameters for next anchor configuration and new samples
         rospy.set_param('/localize_test/reconfig', False)

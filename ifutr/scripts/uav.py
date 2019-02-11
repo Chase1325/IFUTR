@@ -47,12 +47,13 @@ def localize_serviceHandler(request):
         except:
             pass
 
-    return localize_serviceResponse(x_buff,y_buff,z_buff)
-
+    #return localize_serviceResponse(x_buff,y_buff,z_buff)
+    return {'posx': x_buff, 'posy': y_buff, 'posz': z_buff}
+    
 def run_Localize():
     print('Waiting for a call to the service')
     #Wait for client to request service
-    serv = rospy.Service('localize_serv', localize_service, localize_serviceHandler)
+    serv = rospy.Service('localize_serv', command_unit.srv.localize_service, localize_serviceHandler)
     print('Ready for call to service')
     serv.spin()
 

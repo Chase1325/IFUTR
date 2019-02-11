@@ -52,7 +52,7 @@ def run_Localize():
                     #localizeData Returns:
                     #{localizeData.posx, localizeData.posy, localizeData.posz}
                     print('About to get data')
-                    localizeData = localizeService()
+                    localizeData = localizeService(100)
                     print('Got data')
 
                     anchorDistance = rospy.get_param('/anchorpose/size')

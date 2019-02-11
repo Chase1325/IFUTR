@@ -54,7 +54,7 @@ def run_Localize():
     #Wait for client to request service
     serv = rospy.Service('localize_serv', localize_service, localize_serviceHandler)
     print('Ready for call to service')
-    rospy.spin()
+    serv.spin()
 
 
 def run_FlightTest():

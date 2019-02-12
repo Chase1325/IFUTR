@@ -50,7 +50,9 @@ class IPozyx(object):
         """Performs positioning and displays/exports the results."""
         position = Coordinates()
         status = self.pozyx.doPositioning(
-            position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
+            position, self.dimension, self.height, self.algorithm)
+            #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
+
         if status == POZYX_SUCCESS:
             return position
         else:
@@ -58,10 +60,12 @@ class IPozyx(object):
 
     def setAnchorsManual(self):
         """Adds the manually measured anchors to the Pozyx's device list one for one."""
-        status = self.pozyx.clearDevices(remote_id=self.remote_id)
+        #status = self.pozyx.clearDevices(remote_id=self.remote_id)
+        status = self.pozyx.clearDevices()
         for anchor in self.anchors:
-            status &= self.pozyx.addDevice(anchor, remote_id=self.remote_id)
+            #status &= self.pozyx.addDevice(anchor, remote_id=self.remote_id)
+            status &= self.pozyx.addDevice(anchor)
         if len(self.anchors) > 4:
-            status &= self.pozyx.setSelectionOfAnchors(PozyxConstants.ANCHOR_SELECT_AUTO, len(self.anchors),
-                                                       remote_id=self.remote_id)
+            #status &= self.pozyx.setSelectionOfAnchors(PozyxConstants.ANCHOR_SELECT_AUTO, len(self.anchors), remote_id=self.remote_id)
+            status &= self.pozyx.setSelectionOfAnchors(PozyxConstants.ANCHOR_SELECT_AUTO, len(self.anchors))
         return status

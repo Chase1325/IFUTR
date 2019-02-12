@@ -31,14 +31,14 @@ def run_IPAS():
 def run_Localize():
     while(rospy.get_param('/lightswitch')==True):
 
-        print('Waiting for the service')
+        #print('Waiting for the service')
         #rospy.wait_for_service('localize_serv') #Wait for service to be ready
-        print('Done waiting for the service')
+        #print('Done waiting for the service')
 
-        print('Creating Service Proxy')
+        #print('Creating Service Proxy')
         #localizeService = rospy.ServiceProxy('localize_serv', localize_service, persistent=True)
         #
-        print('Made Service Proxy, persistent for multiple calls')
+        #print('Made Service Proxy, persistent for multiple calls')
 
         while(rospy.get_param('/localize_test/reconfig')==False): #Set true when done sampling
 
@@ -51,10 +51,10 @@ def run_Localize():
                         #{localizeData.posx, localizeData.posy, localizeData.posz}
                         print('About to get data')
                         rospy.wait_for_service('localize_serv') #Wait for service to be ready
-                        print('Done waiting')
+                        #print('Done waiting')
                         localizeService = rospy.ServiceProxy('localize_serv', localize_service)
                         #req = localize_serviceRequest()
-                        print('About to grab')
+                        #print('About to grab')
                         localizeData = localizeService()
                         print('Got data')
 

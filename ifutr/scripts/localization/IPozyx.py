@@ -44,7 +44,7 @@ class IPozyx(object):
 
     def setup(self):
         self.setAnchorsManual()
-        self.printPublishConfigurationResult()
+        #self.printPublishConfigurationResult()
 
     def run(self):
         """Performs positioning and displays/exports the results."""

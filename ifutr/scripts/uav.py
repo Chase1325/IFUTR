@@ -29,22 +29,22 @@ def localize_serviceHandler(request):
     r = IPozyx(anchors)
     r.setup()
 
-    x_buff = []
-    y_buff = []
-    z_buff = []
+    x_buff = [1]
+    y_buff = [1]
+    z_buff = [1]
 
     #print('About to gather position data')
     i=0
-    while(i<100):
-        try:
-            pos = r.run()
-            x_buff.append(pos.x)
-            y_buff.append(pos.y)
-            z_buff.append(pos.z)
-
-            i+=1
-        except:
-            pass
+    #while(i<100):
+    #    try:
+    #        pos = r.run()
+    #        x_buff.append(pos.x)
+    #        y_buff.append(pos.y)
+    #        z_buff.append(pos.z)
+#
+#            i+=1
+#        except:
+#            pass
 
     return localize_serviceResponse(x_buff,y_buff,z_buff)
     #return {'posx': x_buff, 'posy': y_buff, 'posz': z_buff}

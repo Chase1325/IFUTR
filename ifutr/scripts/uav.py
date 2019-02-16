@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 
-import rospy
-import pypozyx
-
-from localization.IPozyx import IPozyx
 from time import sleep
 
-from pypozyx import (POZYX_POS_ALG_UWB_ONLY, POZYX_3D, Coordinates, POZYX_SUCCESS, PozyxConstants, version,
-                     DeviceCoordinates, PozyxSerial, get_first_pozyx_serial_port, SingleRegister, DeviceList, PozyxRegisters)
-
-from pypozyx.tools.version_check import perform_latest_version_check
-
+#Import ROS items
+import rospy
+#Import Services
 from command_unit.srv import *
+
+#Import External Libraries
+import pypozyx
+
+#Import Scripts from package
+from localization.IPozyx import IPozyx
+
 
 def initialize():
     rospy.init_node('UAV', anonymous=False)
@@ -35,19 +36,18 @@ def localize_serviceHandler(request):
 
     #print('About to gather position data')
     i=0
-    #while(i<100):
-    #    try:
-    #        pos = r.run()
-    #        x_buff.append(pos.x)
-    #        y_buff.append(pos.y)
-    #        z_buff.append(pos.z)
-#
-#            i+=1
-#        except:
-#            pass
+    while(i<100):
+        try:
+            pos = r.run()
+            x_buff.append(pos.x)
+            y_buff.append(pos.y)
+            z_buff.append(pos.z)
+
+            i+=1
+        except:
+            pass
 
     return localize_serviceResponse(x_buff,y_buff,z_buff)
-    #return {'posx': x_buff, 'posy': y_buff, 'posz': z_buff}
 
 def run_Localize():
     #Wait for client to request service

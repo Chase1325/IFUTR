@@ -123,7 +123,8 @@ class Pozyx2GPSConverter:
         self.sock.sendto(json.dumps(self.data).encode(), self.recving_socket_addr)
 
 if __name__=="__main__":
-
     gps = Pozyx2GPSConverter()
-    data = [1000,1000,1000]
-    gps.send(data)
+    while 1:
+
+        data = [1000,1000,1000]
+        gps.send(data)

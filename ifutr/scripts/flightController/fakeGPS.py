@@ -125,4 +125,5 @@ class Pozyx2GPSConverter:
 if __name__=="__main__":
 
     gps = Pozyx2GPSConverter()
-    gps.send(1000,1000,1000)
+    data = [1000,1000,1000]
+    gps.send(data)

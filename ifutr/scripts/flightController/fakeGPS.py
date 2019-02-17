@@ -121,6 +121,8 @@ class Pozyx2GPSConverter:
 
         # Send UDP Packet
         self.sock.sendto(json.dumps(self.data).encode(), self.recving_socket_addr)
+        print(self.data)
+        print(self.recving_socket_addr)
 
 if __name__=="__main__":
     gps = Pozyx2GPSConverter()

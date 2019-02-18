@@ -5,7 +5,7 @@ from time import sleep
 #Import ROS items
 import rospy
 #Import Services
-from command_unit.srv import *
+from localize_service.srv import *
 
 #Import External Libraries
 import pypozyx

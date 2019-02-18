@@ -11,7 +11,7 @@ import time
 
 #ROS Imports
 import rospy
-from localize_service.srv import *
+from ifutr.srv import *
 
 #Script Imports
 import sys

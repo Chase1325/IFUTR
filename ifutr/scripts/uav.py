@@ -30,9 +30,9 @@ def localize_serviceHandler(request):
     r = IPozyx(anchors)
     r.setup()
 
-    x_buff = [1]
-    y_buff = [1]
-    z_buff = [1]
+    x_buff = []
+    y_buff = []
+    z_buff = []
 
     #print('About to gather position data')
     i=0

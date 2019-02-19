@@ -1,23 +1,24 @@
 anchorpose:
   '0x6110': [0, 0, 1455]
-  '0x6115': [0, 5000, 2587]
-  '0x6117': [5000, 5000, 2587]
-  '0x611e': [5000, 0, 1057]
-  size: 5000
+  '0x6115': [0, 7000, 2587]
+  '0x6117': [7000, 7000, 2024]
+  '0x611e': [7000, 0, 1057]
   count: 4
+  size: 7000
 dronecount: 1
 grid: {height: 5000, width: 5000}
 lightswitch: true
 localize_test:
   reconfig: false
   sample: false
-  testLocale: [0, 0, 0]
+  testLocale: [2500, 4500, 10]
 mode: Localize
 rosdistro: 'kinetic
 
   '
 roslaunch:
-  uris: {host_130_215_127_59__64094: 'http://130.215.127.59:64094/', host_localhost__50991: 'http://localhost:50991/'}
+  uris: {host_130_215_127_59__64094: 'http://130.215.127.59:64094/', host_localhost__50991: 'http://localhost:50991/',
+    host_overwatch__42011: 'http://overwatch:42011/'}
 rosversion: '1.12.14
 
   '

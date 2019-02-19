@@ -65,11 +65,13 @@ def run_Localize():
                         stats = SampleStats(localizeData) #Make the class
                         stats.setErr(testLocale)
 
+                        print(stats)
+
                         #Data: LocalizeData, AnchorPositions, TestLocation
                         #Goal: Generate CSV file of sample data, sample location,
                         #      sample mean, sample variance, sample std, sample error
                         localization_csv_handler.csv_handler(stats, anchorDistance, testLocale)
-                        i=100
+                        #i=100
                 except:
                         print('Fail')
 

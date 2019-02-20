@@ -96,8 +96,8 @@ for f in file:
     s = SampleData(f)
     samples.append(s)
 
-dataMap_Figs = dataMap(samples) #Plot data points, standard deviations, errorbar
-#heat_Figs = heat() #Generate error and variance heat meaps
+#dataMap_Figs = dataMap(samples) #Plot data points, standard deviations, errorbar
+heat_Figs = heat(samples) #Generate error and variance heat meaps
 #tables = table() #Genearte control sample, inner perimeter, outer perimeter, and overall performance tables
 for fig in dataMap_Figs:
     fig.savefig(page, format='pdf')

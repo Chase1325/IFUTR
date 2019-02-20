@@ -16,7 +16,9 @@ def csv_handler(stats, anchorSpace, testLocale):
                                                              date.month, date.day,
                                                              anchorSpace, testLocale[0],
                                                              testLocale[1],testLocale[2])
-    path = 'ifutr/scripts/localization/reports/CSV/ungenerated/'
+    #path = 'ifutr/scripts/localization/reports/CSV/ungenerated/'
+    path = 'reports/CSV/ungenerated/' #This is just for the fix
+
 
     #Statistics variables pulled for ease of use
     data = stats.getData()

@@ -7,7 +7,7 @@ from matplotlib.patches import Ellipse
 
 
 
-def dataMap(samples):
+def dataMap(samples, spacing):
 
     print(len(samples))
     plt.figure(1) #Z=10
@@ -54,6 +54,8 @@ def dataMap(samples):
             for i in range(len(data[0])):
                 plt.plot(data[0][i],data[1][i], color=colors[iter1], marker='o', alpha=0.15)
                 pass
+            plt.xlim(0, spacing)
+            plt.ylim(0, spacing)
 
             plt.figure(4)
             #Std Circle
@@ -70,6 +72,8 @@ def dataMap(samples):
             plt.plot()
             plt.plot(mean[0],mean[1],color=colors[iter1], marker='o')
             plt.plot(true[0],true[1],color='black', marker='o')
+            plt.xlim(0, spacing)
+            plt.ylim(0, spacing)
 
             iter1+=1
 
@@ -77,6 +81,8 @@ def dataMap(samples):
             plt.figure(2)
             for i in range(len(data[0])):
                 plt.plot(data[0][i],data[1][i], color=colors[iter2], marker='o', alpha=0.15)
+            plt.xlim(0, spacing)
+            plt.ylim(0, spacing)
 
 
             plt.figure(5)
@@ -94,6 +100,8 @@ def dataMap(samples):
             plt.plot()
             plt.plot(mean[0],mean[1],color=colors[iter2], marker='o')
             plt.plot(true[0],true[1],color='black', marker='o')
+            plt.xlim(0, spacing)
+            plt.ylim(0, spacing)
 
             iter2+=1
 
@@ -101,6 +109,8 @@ def dataMap(samples):
             plt.figure(3)
             for i in range(len(data[0])):
                 plt.plot(data[0][i],data[1][i], color=colors[iter3], marker='o', alpha=0.15)
+            plt.xlim(0, spacing)
+            plt.ylim(0, spacing)
 
             plt.figure(6)
             #Std Circle
@@ -117,6 +127,8 @@ def dataMap(samples):
             plt.plot()
             plt.plot(mean[0],mean[1],color=colors[iter3], marker='o')
             plt.plot(true[0],true[1],color='black', marker='o')
+            plt.xlim(0, spacing)
+            plt.ylim(0, spacing)
 
             iter3+=1
 

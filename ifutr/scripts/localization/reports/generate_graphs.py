@@ -6,6 +6,7 @@ from matplotlib.backends.backend_pdf import PdfPages as pdf
 import datetime
 import tkFileDialog
 from generate_DataMap import dataMap
+from generate_Heat import heat
 
 
 
@@ -96,9 +97,13 @@ for f in file:
     s = SampleData(f)
     samples.append(s)
 
-#dataMap_Figs = dataMap(samples) #Plot data points, standard deviations, errorbar
+dataMap_Figs = dataMap(samples, spacing) #Plot data points, standard deviations, errorbar
 heat_Figs = heat(samples) #Generate error and variance heat meaps
 #tables = table() #Genearte control sample, inner perimeter, outer perimeter, and overall performance tables
 for fig in dataMap_Figs:
     fig.savefig(page, format='pdf')
+for fig in heat_Figs:
+    fig.savefig(page, format='pdf')
+
+    
 page.close()

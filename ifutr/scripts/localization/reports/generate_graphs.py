@@ -7,6 +7,7 @@ import datetime
 import tkFileDialog
 from generate_DataMap import dataMap
 from generate_Heat import heat
+from generate_Table import dataTable
 
 
 
@@ -82,7 +83,7 @@ class SampleData(object):
 
 
 #Setup PDF File Info
-spacing=3000
+spacing=11000
 date = datetime.datetime.now()
 path = 'PDF/'
 file='{}_{}_{}_AnchorSpacing-{}.pdf'.format(date.year, date.month, date.day, spacing)
@@ -98,12 +99,13 @@ for f in file:
     samples.append(s)
 
 dataMap_Figs = dataMap(samples, spacing) #Plot data points, standard deviations, errorbar
-heat_Figs = heat(samples) #Generate error and variance heat meaps
-#tables = table() #Genearte control sample, inner perimeter, outer perimeter, and overall performance tables
+heat_Figs = heat(samples, spacing) #Generate error and variance heat meaps
+tables = dataTable(samples) #Genearte control sample, inner perimeter, outer perimeter, and overall performance tables
 for fig in dataMap_Figs:
     fig.savefig(page, format='pdf')
 for fig in heat_Figs:
     fig.savefig(page, format='pdf')
+for table in tables:
+    table.savefig(page, format='pdf')
 
-    
 page.close()

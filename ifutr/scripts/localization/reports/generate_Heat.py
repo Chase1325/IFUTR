@@ -7,7 +7,7 @@ from scipy import interpolate
 
 
 
-def heat(samples):
+def heat(samples, spacing):
 
     plt.figure(7) #Z=10
     plt.title('Error Map @ Z=100mm')
@@ -92,7 +92,7 @@ def heat(samples):
 
     cmap = m.cm.jet
     norm = m.colors.Normalize(vmin=0, vmax=250)
-    xnew, ynew = np.mgrid[0:3000:5, 0:3000:5]
+    xnew, ynew = np.mgrid[0:spacing:10, 0:spacing:10]
 
         #Z=100 Error heatmap
     plt.figure(7) #Z=10
@@ -102,6 +102,8 @@ def heat(samples):
     map = ax.pcolormesh(xnew,ynew,fnew, cmap=cmap, norm=norm)
     plt.colorbar(map, cmap=cmap, norm=norm)
     plt.axes(ax)
+    plt.xlim(0, spacing)
+    plt.ylim(0, spacing)
     plt.plot()
 
 
@@ -113,7 +115,10 @@ def heat(samples):
     map = ax.pcolormesh(xnew,ynew,fnew, cmap=cmap, norm=norm)
     plt.colorbar(map, cmap=cmap, norm=norm)
     plt.axes(ax)
+    plt.xlim(0, spacing)
+    plt.ylim(0, spacing)
     plt.plot()
+
 
     #Z=2025 Error heatmap
     plt.figure(9) #Z=10
@@ -123,6 +128,8 @@ def heat(samples):
     map = ax.pcolormesh(xnew,ynew,fnew, cmap=cmap, norm=norm)
     plt.colorbar(map, cmap=cmap, norm=norm)
     plt.axes(ax)
+    plt.xlim(0, spacing)
+    plt.ylim(0, spacing)
     plt.plot()
 
     #Z=100 STD heatmap
@@ -133,6 +140,8 @@ def heat(samples):
     map = ax.pcolormesh(xnew,ynew,fnew, cmap=cmap, norm=norm)
     plt.colorbar(map, cmap=cmap, norm=norm)
     plt.axes(ax)
+    plt.xlim(0, spacing)
+    plt.ylim(0, spacing)
     plt.plot()
 
 
@@ -144,6 +153,8 @@ def heat(samples):
     map = ax.pcolormesh(xnew,ynew,fnew, cmap=cmap, norm=norm)
     plt.colorbar(map, cmap=cmap, norm=norm)
     plt.axes(ax)
+    plt.xlim(0, spacing)
+    plt.ylim(0, spacing)
     plt.plot()
 
     #Z=2025 STD heatmap
@@ -154,6 +165,8 @@ def heat(samples):
     map = ax.pcolormesh(xnew,ynew,fnew, cmap=cmap, norm=norm)
     plt.colorbar(map, cmap=cmap, norm=norm)
     plt.axes(ax)
+    plt.xlim(0, spacing)
+    plt.ylim(0, spacing)
     plt.plot()
 
     fig1=plt.figure(7)

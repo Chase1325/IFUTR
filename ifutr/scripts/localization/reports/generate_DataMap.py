@@ -5,8 +5,6 @@ import numpy as np
 from matplotlib.patches import Ellipse
 
 
-
-
 def dataMap(samples, spacing):
 
     print(len(samples))

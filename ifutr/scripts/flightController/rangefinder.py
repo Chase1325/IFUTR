@@ -6,7 +6,8 @@ from serial import Serial
 class Rangefinder(object):
 
     def __init__(self):
-        self.serialDevice = "/dev/ttyAMA0" # default for RaspberryPi
+        #self.serialDevice = "/dev/ttyAMA0" # default for RaspberryPi
+        self.serialDevice = "/dev/serail0"
         self.connection = Serial(self.serialDevice)
 
     def getRange(self):

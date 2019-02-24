@@ -10,7 +10,7 @@ class Rangefinder(object):
         #self.serialDevice = "/dev/ttyAMA0" # default for RaspberryPi
         self.serialDevice = "/dev/serial0"
         self.connection = Serial(self.serialDevice)
-        self.node = rospy.init_node('rangeFinder', anonymous=True)
+        #self.node = rospy.init_node('rangeFinder', anonymous=True)
         self.pub = rospy.Publisher('range', Int16, queue_size=10)
 
     def getRange(self):

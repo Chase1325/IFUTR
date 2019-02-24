@@ -1,10 +1,10 @@
 anchorpose:
   '0x6110': [0, 0, 1455]
-  '0x6115': [0, 7000, 2587]
-  '0x6117': [7000, 7000, 2024]
-  '0x611e': [7000, 0, 1057]
+  '0x6115': [0, 3000, 2587]
+  '0x6117': [3000, 3000, 2024]
+  '0x611e': [3000, 0, 1057]
   count: 4
-  size: 7000
+  size: 3000
 dronecount: 1
 grid: {height: 5000, width: 5000}
 lightswitch: true
@@ -12,7 +12,7 @@ localize_test:
   reconfig: false
   sample: false
   testLocale: [2500, 4500, 10]
-mode: Localize
+mode: Flight_Test
 rosdistro: 'kinetic
 
   '

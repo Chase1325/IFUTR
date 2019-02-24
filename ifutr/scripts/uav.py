@@ -12,6 +12,7 @@ import pypozyx
 
 #Import Scripts from package
 from localization.IPozyx import IPozyx
+from flightController.rangefinder import Rangefinder
 
 
 def initialize():
@@ -59,7 +60,20 @@ def run_Localize():
 def run_FlightTest():
     #Flight test updates drone pose inside the workspace
     #by user-sent pose commands
-    pass
+    range = Rangefinder()
+    anchors = rospy.get_param('/anchorpose')
+    pozyx = IPozyx(anchors)
+    pozyx.setup()
+
+    while(rospy.get_param('/lightswitch'==True)):
+        try:
+            pos = pozyx.run()
+            z = range.getRange()
+            print('X={}, Y={}, Z={}'.format(pos.x, pos.y, z))
+        except:
+            pass
+
+
 
 def run():
     #System Mode ('IPAS', 'Localize', 'Flight_Test', 'Ground_Test')

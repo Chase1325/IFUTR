@@ -50,8 +50,8 @@ def get_range_finder_reading(connection):
 
 
 if __name__ == '__main__':
-
+    connection = Serial(serialDevice)
     while 1:
         #measurement = measure(serialDevice)
-        measurement = get_range_finder_reading(serialDevice)
+        measurement = get_range_finder_reading(connection)
         print("distance =",measurement)

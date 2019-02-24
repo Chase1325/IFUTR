@@ -1,7 +1,7 @@
 from time import time
 from serial import Serial
 import rospy
-from std_msgs.msg import int16
+from std_msgs.msg import Int16
 
 
 class Rangefinder(object):
@@ -11,7 +11,7 @@ class Rangefinder(object):
         self.serialDevice = "/dev/serial0"
         self.connection = Serial(self.serialDevice)
         self.node = rospy.init_node('rangeFinder', anonymous=True)
-        self.pub = rospy.Publisher('range', int16, queue_size=10)
+        self.pub = rospy.Publisher('range', Int16, queue_size=10)
 
     def getRange(self):
             b = self.connection.read(1)

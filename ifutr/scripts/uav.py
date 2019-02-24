@@ -72,7 +72,7 @@ def run_FlightTest():
     while(rospy.get_param('/lightswitch'==True)):
         #try:
 
-            pos = pozyx.run(1000)
+            #pos = pozyx.run(1000)
             z = range.getRange()
             #print('got pozyx')
             #print('got range')

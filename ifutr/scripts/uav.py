@@ -75,12 +75,12 @@ def run_FlightTest():
     rangeProcess = Process(target=ranger.RangeProcess)
     pozyxProcess = Process(target=poz.PozyxProcess)
     print('about to start range')
-    #rangeProcess.start()
+    rangeProcess.start()
     print('About to start pozyx')
-    pozyxProcess.start()
+    #pozyxProcess.start()
 
     rangeProcess.join()
-    pozyxProcess.join()
+    #pozyxProcess.join()
 
 
 

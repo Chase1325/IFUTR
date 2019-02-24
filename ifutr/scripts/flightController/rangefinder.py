@@ -35,8 +35,23 @@ def measure(portName):
     ser.close()
     raise RuntimeError("Expected serial data not received")
 
+def get_range_finder_reading(connection):
+        b = connection.read(1)
+        while b != b'R':
+            b = connection.read(1)
+        b = connection.read(1)
+        num = b''
+        while b != b'\r':
+            num += b
+            b = connection.read(1)
+        if connection.in_waiting > 10:
+            connection.flush()
+        return int(num.decode()) // 10
+
+
 if __name__ == '__main__':
 
     while 1:
-        measurement = measure(serialDevice)
+        #measurement = measure(serialDevice)
+        measurement = get_range_finder_reading(serialDevice)
         print("distance =",measurement)

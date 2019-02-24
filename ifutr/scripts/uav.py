@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 from time import sleep
+from multiprocessing import Process
 
 #Import ROS items
 import rospy
@@ -11,8 +12,8 @@ from ifutr.srv import *
 import pypozyx
 
 #Import Scripts from package
-from localization.IPozyx import IPozyx
-from flightController.rangefinder import Rangefinder
+import localization.IPozyx as IPozyx
+import flightController.rangefinder as ranger
 
 
 def initialize():
@@ -61,14 +62,20 @@ def run_FlightTest():
     #Flight test updates drone pose inside the workspace
     #by user-sent pose commands
     #print('Inside flight test')
-    range = Rangefinder()
+    #range = Rangefinder()
     #print(range)
-    anchors = rospy.get_param('/anchorpose')
-    pozyx = IPozyx(anchors)
-    pozyx.setup()
+    #anchors = rospy.get_param('/anchorpose')
+    #pozyx = IPozyx(anchors)
+    #pozyx.setup()
     #print(pozyx)
 
-    range.pubRange()
+    #range.pubRange()
+    rangeProcess = Process(target=ranger.RangeProcess())
+    rangeProcess.start()
+    rangeProcess.join()
+
+
+
 
     #while(rospy.get_param('/lightswitch'==True)):
         #try:

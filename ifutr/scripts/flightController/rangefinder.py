@@ -47,6 +47,13 @@ class Rangefinder(object):
             self.pub.publish(val)
 
 
+def RangeProcess():
+    r = Rangefinder()
+    while(rospy.get_param('/lightswitch')==True):
+        r.pubRange()
+
+
+        
 #if __name__ == '__main__':
 #    connection = Serial(serialDevice)
 #    while 1:

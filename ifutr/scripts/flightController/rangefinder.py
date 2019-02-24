@@ -36,6 +36,7 @@ def measure(portName):
     raise RuntimeError("Expected serial data not received")
 
 if __name__ == '__main__':
-    measurement = measure(serialDevice)
+
     while 1:
+        measurement = measure(serialDevice)
         print("distance =",measurement)

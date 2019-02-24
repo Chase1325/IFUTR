@@ -59,7 +59,7 @@ class IPozyx(object):
                 success=True
                 return position
             else:
-                sleep(10)
+                sleep(0.1)
 
     def setAnchorsManual(self):
         """Adds the manually measured anchors to the Pozyx's device list one for one."""

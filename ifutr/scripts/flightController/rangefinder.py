@@ -30,7 +30,6 @@ class Rangefinder(object):
             return val
 
     def pubRange(self):
-        while 1:
             b = self.connection.read(1)
             while b != b'R':
                 b = self.connection.read(1)
@@ -53,7 +52,7 @@ def RangeProcess():
         r.pubRange()
 
 
-        
+
 #if __name__ == '__main__':
 #    connection = Serial(serialDevice)
 #    while 1:

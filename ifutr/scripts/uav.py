@@ -12,7 +12,7 @@ from ifutr.srv import *
 import pypozyx
 
 #Import Scripts from package
-import localization.IPozyx as IPozyx
+import localization.IPozyx as poz
 import flightController.rangefinder as ranger
 
 
@@ -70,10 +70,12 @@ def run_FlightTest():
     #print(pozyx)
 
     #range.pubRange()
+    jobs = []
     rangeProcess = Process(target=ranger.RangeProcess())
-    pozyxProcess = Process(target=IPozyx.PozyxProcess())
+    pozyxProcess = Process(target=poz.PozyxProcess())
     rangeProcess.start()
     pozyxProcess.start()
+
     rangeProcess.join()
     pozyxProcess.join()
 

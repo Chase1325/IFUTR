@@ -39,18 +39,19 @@ class IPozyx(object):
 
 
         self.algorithm = PozyxConstants.POSITIONING_ALGORITHM_UWB_ONLY
-        self.dimension = PozyxConstants.DIMENSION_2_5D
+        self.dimension = PozyxConstants.DIMENSION_3D
         self.height = 1000
 
     def setup(self):
         self.setAnchorsManual()
         #self.printPublishConfigurationResult()
 
-    def run(self):
+    def run(self, height):
         """Performs positioning and displays/exports the results."""
         position = Coordinates()
         status = self.pozyx.doPositioning(
-            position, self.dimension, self.height, self.algorithm)
+            position, self.dimension, height, self.algorithm)
+            #position, self.dimension, self.height, self.algorithm)
             #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
 
         if status == POZYX_SUCCESS:

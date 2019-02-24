@@ -73,6 +73,7 @@ def run_FlightTest():
     jobs = []
     rangeProcess = Process(target=ranger.RangeProcess())
     pozyxProcess = Process(target=poz.PozyxProcess())
+    print('about to start range')
     rangeProcess.start()
     print('About to start pozyx')
     pozyxProcess.start()

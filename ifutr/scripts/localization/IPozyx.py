@@ -85,7 +85,7 @@ class IPozyx(object):
                 success=True
                 self.pubX.publish(position.x)
                 self.pubY.publish(position.y)
-                print(position.x)
+                print(type(position.x))
                 print(position.y)
             else:
                 pass

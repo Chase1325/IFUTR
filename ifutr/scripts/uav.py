@@ -68,7 +68,9 @@ def run_FlightTest():
     while(rospy.get_param('/lightswitch'==True)):
         try:
             pos = pozyx.run()
+            print('got pozyx')
             z = range.getRange()
+            print('got range')
             print('X={}, Y={}, Z={}'.format(pos.x, pos.y, z))
         except:
             pass

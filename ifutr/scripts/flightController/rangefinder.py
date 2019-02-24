@@ -1,4 +1,4 @@
-import time
+from time import time
 from serial import Serial
 
 serialDevice = "/dev/ttyAMA0" # default for RaspberryPi

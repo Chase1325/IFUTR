@@ -71,8 +71,11 @@ def run_FlightTest():
 
     #range.pubRange()
     rangeProcess = Process(target=ranger.RangeProcess())
+    pozyxProcess = Process(target=IPozyx.PozyxProcess())
     rangeProcess.start()
+    pozyxProcess.start()
     rangeProcess.join()
+    pozyxProcess.join()
 
 
 

@@ -7,6 +7,9 @@ from pythonosc.udp_client import SimpleUDPClient
 
 from pypozyx.tools.version_check import perform_latest_version_check
 
+import rospy
+from std_msgs.msg import Int16
+
 class IPozyx(object):
     """Continuously calls the Pozyx positioning function and prints its position."""
 
@@ -43,9 +46,16 @@ class IPozyx(object):
         self.dimension = PozyxConstants.DIMENSION_3D
         self.height = 1000
 
+        self.pubX = rospy.Publisher('posX', Int16, queue_size=10)
+        self.pubY = rospy.Publisher('posY', Int16, queue_size=10)
+        self.subZ = rospy.Subscriber('range', Int16, rangeCallback)
+
     def setup(self):
         self.setAnchorsManual()
         #self.printPublishConfigurationResult()
+
+    def rangeCallback(self, msg):
+        self.height = msg.data
 
     def run(self, height):
         """Performs positioning and displays/exports the results."""
@@ -63,6 +73,22 @@ class IPozyx(object):
                 pass
                 #sleep(0.025)
 
+    def pubPozyx(self):
+        #success=False
+        #while(success!=True):
+            position = Coordinates()
+            status = self.pozyx.doPositioning(
+                #position, self.dimension, height, self.algorithm)
+                position, self.dimension, self.height, self.algorithm)
+                #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
+            if status == POZYX_SUCCESS:
+                success=True
+                self.pubX.publish(position.x)
+                self.pubY.publish(position.y)
+            else:
+                pass
+            rospy.spin()
+
     def setAnchorsManual(self):
         """Adds the manually measured anchors to the Pozyx's device list one for one."""
         #status = self.pozyx.clearDevices(remote_id=self.remote_id)
@@ -74,3 +100,12 @@ class IPozyx(object):
             #status &= self.pozyx.setSelectionOfAnchors(PozyxConstants.ANCHOR_SELECT_AUTO, len(self.anchors), remote_id=self.remote_id)
             status &= self.pozyx.setSelectionOfAnchors(PozyxConstants.ANCHOR_SELECT_AUTO, len(self.anchors))
         return status
+
+
+
+def PozyxProcess():
+    anchors = rospy.get_param('/anchorpose')
+    pozyx = IPozyx(anchors)
+    pozyx.setup()
+    while(rospy.get_param('/lightswitch')==True):
+        pozyx.pubPozyx()

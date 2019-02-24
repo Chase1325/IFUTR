@@ -72,8 +72,8 @@ def run_FlightTest():
     #range.pubRange()
     print('about to start processes')
     jobs = []
-    rangeProcess = Process(target=ranger.RangeProcess())
-    pozyxProcess = Process(target=poz.PozyxProcess())
+    rangeProcess = Process(target=ranger.RangeProcess)
+    pozyxProcess = Process(target=poz.PozyxProcess)
     print('about to start range')
     rangeProcess.start()
     print('About to start pozyx')

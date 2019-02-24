@@ -23,8 +23,8 @@ class Rangefinder(object):
             return int(num.decode()) // 10
 
 
-if __name__ == '__main__':
-    connection = Serial(serialDevice)
-    while 1:
-        measurement = getRange(connection)
-        print("distance =",measurement)
+#if __name__ == '__main__':
+#    connection = Serial(serialDevice)
+#    while 1:
+#        measurement = getRange(connection)
+#        print("distance =",measurement)

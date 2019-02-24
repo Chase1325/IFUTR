@@ -68,12 +68,13 @@ def run_FlightTest():
     pozyx.setup()
     #print(pozyx)
 
+    range.pubRange()
 
-    while(rospy.get_param('/lightswitch'==True)):
+    #while(rospy.get_param('/lightswitch'==True)):
         #try:
 
             #pos = pozyx.run(1000)
-            z = range.getRange()
+            #z = range.getRange()
             #print('got pozyx')
             #print('got range')
             #print(z)

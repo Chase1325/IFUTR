@@ -60,10 +60,14 @@ def run_Localize():
 def run_FlightTest():
     #Flight test updates drone pose inside the workspace
     #by user-sent pose commands
+    print('Inside flight test')
     range = Rangefinder()
+    print(range)
     anchors = rospy.get_param('/anchorpose')
     pozyx = IPozyx(anchors)
     pozyx.setup()
+    print(pozyx)
+
 
     while(rospy.get_param('/lightswitch'==True)):
         try:

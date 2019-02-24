@@ -104,8 +104,10 @@ class IPozyx(object):
 
 
 def PozyxProcess():
+    print('in process')
     anchors = rospy.get_param('/anchorpose')
     pozyx = IPozyx(anchors)
     pozyx.setup()
+    
     while(rospy.get_param('/lightswitch')==True):
         pozyx.pubPozyx()

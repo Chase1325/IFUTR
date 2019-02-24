@@ -74,6 +74,7 @@ def run_FlightTest():
     rangeProcess = Process(target=ranger.RangeProcess())
     pozyxProcess = Process(target=poz.PozyxProcess())
     rangeProcess.start()
+    print('About to start pozyx')
     pozyxProcess.start()
 
     rangeProcess.join()

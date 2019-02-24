@@ -12,7 +12,7 @@ import pypozyx
 
 #Import Scripts from package
 from localization.IPozyx import IPozyx
-from flightController.Rangefinder import Rangefinder
+from flightController.rangefinder import Rangefinder
 
 
 def initialize():

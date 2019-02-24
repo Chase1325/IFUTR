@@ -60,21 +60,21 @@ def run_Localize():
 def run_FlightTest():
     #Flight test updates drone pose inside the workspace
     #by user-sent pose commands
-    print('Inside flight test')
+    #print('Inside flight test')
     range = Rangefinder()
-    print(range)
+    #print(range)
     anchors = rospy.get_param('/anchorpose')
     pozyx = IPozyx(anchors)
     pozyx.setup()
-    print(pozyx)
+    #print(pozyx)
 
 
     while(rospy.get_param('/lightswitch'==True)):
         try:
             pos = pozyx.run()
-            print('got pozyx')
+            #print('got pozyx')
             z = range.getRange()
-            print('got range')
+            #print('got range')
             print('X={}, Y={}, Z={}'.format(pos.x, pos.y, z))
         except:
             pass

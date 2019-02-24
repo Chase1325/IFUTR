@@ -9,7 +9,7 @@ class Rangefinder(object):
         self.serialDevice = "/dev/ttyAMA0" # default for RaspberryPi
         self.connection = Serial(self.serialDevice)
 
-    def getRange():
+    def getRange(self):
             b = self.connection.read(1)
             while b != b'R':
                 b = self.connection.read(1)

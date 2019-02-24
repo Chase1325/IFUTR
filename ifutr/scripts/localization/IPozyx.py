@@ -87,7 +87,7 @@ class IPozyx(object):
                 self.pubY.publish(position.y)
             else:
                 pass
-            rospy.spin()
+            #rospy.spin()
 
     def setAnchorsManual(self):
         """Adds the manually measured anchors to the Pozyx's device list one for one."""

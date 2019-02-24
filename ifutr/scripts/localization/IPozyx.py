@@ -85,6 +85,8 @@ class IPozyx(object):
                 success=True
                 self.pubX.publish(position.x)
                 self.pubY.publish(position.y)
+                print(position.x)
+                print(position.y)
             else:
                 pass
             #rospy.spin()
@@ -108,6 +110,6 @@ def PozyxProcess():
     anchors = rospy.get_param('/anchorpose')
     pozyx = IPozyx(anchors)
     pozyx.setup()
-    
+
     while(rospy.get_param('/lightswitch')==True):
         pozyx.pubPozyx()

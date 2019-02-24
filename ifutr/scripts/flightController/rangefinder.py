@@ -43,6 +43,7 @@ class Rangefinder(object):
 
             val = int(num.decode()) // 10
             #print('MASSIVE FARTS!!!' + str(val))
+            print(val)
             self.pub.publish(val)
 
 

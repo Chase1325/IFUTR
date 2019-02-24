@@ -17,6 +17,7 @@ class IPozyx(object):
             print("No Pozyx connected. Check your USB cable or your driver!")
 
         self.pozyx = PozyxSerial(self.serial_port)
+        print(self.serial_port)
 
         if(anchors.get('count')==4):
 
@@ -59,7 +60,8 @@ class IPozyx(object):
                 success=True
                 return position
             else:
-                sleep(0.025)
+                pass
+                #sleep(0.025)
 
     def setAnchorsManual(self):
         """Adds the manually measured anchors to the Pozyx's device list one for one."""

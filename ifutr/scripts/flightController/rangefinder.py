@@ -21,8 +21,10 @@ class Rangefinder(object):
                 b = self.connection.read(1)
             if self.connection.in_waiting > 10:
                 self.connection.flush()
-            print('MASSIVE FARTS!!!')
-            return int(num.decode()) // 10
+
+            val = int(num.decode()) // 10
+            print('MASSIVE FARTS!!!' + str(val))
+            return val
 
 
 #if __name__ == '__main__':

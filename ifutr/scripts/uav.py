@@ -77,6 +77,7 @@ def run_FlightTest():
             #print('got range')
             #print(z)
             print('X={}, Y={}, Z={}'.format(pos.x, pos.y, z))
+            sleep(10)
         except:
             print('fail')
 

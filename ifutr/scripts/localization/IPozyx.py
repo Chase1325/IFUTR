@@ -39,7 +39,7 @@ class IPozyx(object):
 
 
         self.algorithm = PozyxConstants.POSITIONING_ALGORITHM_UWB_ONLY
-        self.dimension = PozyxConstants.DIMENSION_2D
+        self.dimension = PozyxConstants.DIMENSION_2_5D
         self.height = 1000
 
     def setup(self):

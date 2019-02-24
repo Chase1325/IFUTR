@@ -1,7 +1,7 @@
 from time import time
 from serial import Serial
 
-serialDevice = "/dev/serial0" # default for RaspberryPi
+serialDevice = "/dev/ttyS0" # default for RaspberryPi
 maxwait = 3 # seconds to try for a good reading before quitting
 
 def measure(portName):
@@ -37,4 +37,5 @@ def measure(portName):
 
 if __name__ == '__main__':
     measurement = measure(serialDevice)
-    print("distance =",measurement)
+    while 1:
+        print("distance =",measurement)

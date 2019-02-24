@@ -48,16 +48,18 @@ class IPozyx(object):
 
     def run(self, height):
         """Performs positioning and displays/exports the results."""
-        position = Coordinates()
-        status = self.pozyx.doPositioning(
-            position, self.dimension, height, self.algorithm)
-            #position, self.dimension, self.height, self.algorithm)
-            #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
-
-        if status == POZYX_SUCCESS:
-            return position
-        else:
-            pass
+        success=False
+        while(success!=True):
+            position = Coordinates()
+            status = self.pozyx.doPositioning(
+                position, self.dimension, height, self.algorithm)
+                #position, self.dimension, self.height, self.algorithm)
+                #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
+            if status == POZYX_SUCCESS:
+                success=True
+                return position
+            else:
+                pass
 
     def setAnchorsManual(self):
         """Adds the manually measured anchors to the Pozyx's device list one for one."""

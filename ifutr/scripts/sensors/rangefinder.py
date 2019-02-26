@@ -46,16 +46,15 @@ class Rangefinder(object):
             print(val)
             self.pub.publish(val)
 
+def initialize():
+    rospy.init_node('rangefinder', anonymous=False)
 
-def RangeProcess():
+def run():
     r = Rangefinder()
     while(rospy.get_param('/lightswitch')==True):
         r.pubRange()
 
 
-
-#if __name__ == '__main__':
-#    connection = Serial(serialDevice)
-#    while 1:
-#        measurement = getRange(connection)
-#        print("distance =",measurement)
+if __name__ == "__main__":
+    initialize()
+    run()

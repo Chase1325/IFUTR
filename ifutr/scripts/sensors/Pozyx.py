@@ -8,6 +8,7 @@ from pypozyx.tools.version_check import perform_latest_version_check
 
 import rospy
 from std_msgs.msg import Int16
+from ifutr.msg import Pozyx_Pose
 
 class IPozyx(object):
     """Continuously calls the Pozyx positioning function and prints its position."""
@@ -45,8 +46,10 @@ class IPozyx(object):
         self.dimension = PozyxConstants.DIMENSION_3D
         self.height = 1000
 
-        self.pubX = rospy.Publisher('posX', Int16, queue_size=10)
-        self.pubY = rospy.Publisher('posY', Int16, queue_size=10)
+        self.pub = rospy.Publisher('pose', Pozyx_Pose, queue_size=10)
+        self.pose = Pozyx_Pose()
+        #self.pubX = rospy.Publisher('posX', Int16, queue_size=10)
+        #self.pubY = rospy.Publisher('posY', Int16, queue_size=10)
         #self.subZ = rospy.Subscriber('range', Int16, rangeCallback)
 
     def setup(self):
@@ -82,10 +85,9 @@ class IPozyx(object):
                 #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
             if status == POZYX_SUCCESS:
                 success=True
-                self.pubX.publish(position.x)
-                self.pubY.publish(position.y)
-                print(type(position.x))
-                print(position.y)
+                self.pose.posx = position.x
+                self.pose.posy = position.y
+                self.pub.publish(self.pose)
             else:
                 pass
             #rospy.spin()

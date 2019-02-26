@@ -12,8 +12,8 @@ from ifutr.srv import *
 import pypozyx
 
 #Import Scripts from package
-import localization.IPozyx as poz
-import flightController.rangefinder as ranger
+import sensors.Pozyx as poz
+#import flightController.rangefinder as ranger
 
 
 def initialize():
@@ -29,7 +29,7 @@ def localize_serviceHandler(request):
     #change the IDs and coordinates yourself according to your measurement
     anchors = rospy.get_param('/anchorpose')
 
-    r = IPozyx(anchors)
+    r = poz.IPozyx(anchors)
     r.setup()
 
     x_buff = []
@@ -67,27 +67,10 @@ def run_FlightTest():
     #anchors = rospy.get_param('/anchorpose')
     #pozyx = IPozyx(anchors)
     #pozyx.setup()
-    #print(pozyx)
-
-    #range.pubRange()
-    print('about to start processes')
-    jobs = []
-    rangeProcess = Process(target=ranger.RangeProcess)
-    pozyxProcess = Process(target=poz.PozyxProcess)
-    print('about to start range')
-    rangeProcess.start()
-    print('About to start pozyx')
-    #pozyxProcess.start()
-
-    rangeProcess.join()
-    #pozyxProcess.join()
-
-
 
 
     #while(rospy.get_param('/lightswitch'==True)):
         #try:
-
             #pos = pozyx.run(1000)
             #z = range.getRange()
             #print('got pozyx')

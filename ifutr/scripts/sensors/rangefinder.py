@@ -43,7 +43,7 @@ class Rangefinder(object):
                 self.connection.flush()
 
             val = int(num.decode()) // 10
-            print(val)
+            #print(val)
             self.pub.publish(val)
 
 def initialize():

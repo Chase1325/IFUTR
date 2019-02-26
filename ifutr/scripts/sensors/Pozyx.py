@@ -102,6 +102,8 @@ class IPozyx(object):
             status &= self.pozyx.setSelectionOfAnchors(PozyxConstants.ANCHOR_SELECT_AUTO, len(self.anchors))
         return status
 
+def initialize():
+    rospy.init_node('Pozyx', anonymous=False)
 
 
 def run():

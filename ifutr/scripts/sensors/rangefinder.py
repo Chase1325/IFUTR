@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from time import time
 from serial import Serial
 import rospy

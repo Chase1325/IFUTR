@@ -58,7 +58,7 @@ class IPozyx(object):
     def rangeCallback(self, msg):
         self.height = msg.data
         print(self.height)
-        rospy.spin()
+        #rospy.spin()
 
     def run(self, height):
         """Performs positioning and displays/exports the results."""

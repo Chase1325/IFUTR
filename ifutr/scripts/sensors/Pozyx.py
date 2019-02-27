@@ -49,7 +49,7 @@ class IPozyx(object):
         self.pub = rospy.Publisher('pose', Pozyx_Pose, queue_size=10)
         self.pose = Pozyx_Pose()
 
-        self.subZ = rospy.Subscriber('range', Int16, rangeCallback)
+        self.subZ = rospy.Subscriber('range', Int16, self.rangeCallback)
 
     def setup(self):
         self.setAnchorsManual()

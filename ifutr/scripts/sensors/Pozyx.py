@@ -16,6 +16,7 @@ class IPozyx(object):
     def __init__(self, anchors):
 
         self.serial_port = get_first_pozyx_serial_port()
+        print(self.serial_port)
         if self.serial_port is None:
             print("No Pozyx connected. Check your USB cable or your driver!")
 

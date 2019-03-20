@@ -21,7 +21,7 @@ class IPozyx(object):
             print("No Pozyx connected. Check your USB cable or your driver!")
 
         self.pozyx = PozyxSerial(self.serial_port)
-        print(self.serial_port)
+        #print(self.serial_port)
 
         if(anchors.get('count')==4):
 

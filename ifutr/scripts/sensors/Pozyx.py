@@ -90,7 +90,7 @@ class IPozyx(object):
 
                 self.pose.posx = position.x
                 self.pose.posy = position.y
-                self.pose.posz = self.height
+                #self.pose.posz = self.height
                 self.pub.publish(self.pose)
             else:
                 pass

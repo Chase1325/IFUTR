@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from time import sleep
+import time as time
 
 from pypozyx import (POZYX_POS_ALG_UWB_ONLY, POZYX_3D, Coordinates, POZYX_SUCCESS, PozyxConstants, version, DeviceCoordinates, PozyxSerial, get_first_pozyx_serial_port, SingleRegister, DeviceList, PozyxRegisters)
 #from pythonosc.udp_client import SimpleUDPClient

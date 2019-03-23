@@ -31,7 +31,7 @@ while 1:
 
 
     i=0
-    while(i<100):
+    while(i<80):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
         GPIO.output(sig1_pin_r, GPIO.HIGH)
@@ -44,10 +44,10 @@ while 1:
     GPIO.output(sig2_pin_l, GPIO.LOW)
     GPIO.output(sig1_pin_r, GPIO.LOW)
     GPIO.output(sig2_pin_r, GPIO.LOW)
-    time.sleep(3)
+    time.sleep(5)
 
     j=0
-    while(j<25):
+    while(j<15):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
         GPIO.output(sig1_pin_r, GPIO.LOW)
@@ -58,7 +58,7 @@ while 1:
         print('turn')
 
     i=0
-    while(i<50):
+    while(i<30):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
         GPIO.output(sig1_pin_r, GPIO.HIGH)
@@ -72,10 +72,10 @@ while 1:
     GPIO.output(sig2_pin_l, GPIO.LOW)
     GPIO.output(sig1_pin_r, GPIO.LOW)
     GPIO.output(sig2_pin_r, GPIO.LOW)
-    time.sleep(3)
+    time.sleep(5)
 
     j=0
-    while(j<35):
+    while(j<25):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
         GPIO.output(sig1_pin_r, GPIO.LOW)

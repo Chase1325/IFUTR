@@ -25,7 +25,7 @@ GPIO.setup(sig1_pin_r, GPIO.OUT)
 GPIO.setup(sig2_pin_r, GPIO.OUT)
 
 while 1:
-    pwm_l.ChangeDutyCycle(100)
+    pwm_l.ChangeDutyCycle(80)
     pwm_r.ChangeDutyCycle(100)
 
 
@@ -75,10 +75,10 @@ while 1:
     time.sleep(5)
 
     j=0
-    while(j<25):
-        GPIO.output(sig1_pin_l, GPIO.HIGH)
+    while(j<10):
+        GPIO.output(sig1_pin_l, GPIO.LOW)
         GPIO.output(sig2_pin_l, GPIO.LOW)
-        GPIO.output(sig1_pin_r, GPIO.LOW)
+        GPIO.output(sig1_pin_r, GPIO.HIGH)
         GPIO.output(sig2_pin_r, GPIO.LOW)
 
         j+=1
@@ -86,7 +86,7 @@ while 1:
         print('turn')
 
     i=0
-    while(i<100):
+    while(i<30):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
         GPIO.output(sig1_pin_r, GPIO.HIGH)
@@ -95,3 +95,9 @@ while 1:
         i+=1
         time.sleep(.1)
         print('go straight')
+
+    GPIO.output(sig1_pin_l, GPIO.LOW)
+    GPIO.output(sig2_pin_l, GPIO.LOW)
+    GPIO.output(sig1_pin_r, GPIO.LOW)
+    GPIO.output(sig2_pin_r, GPIO.LOW)
+    time.sleep(15)

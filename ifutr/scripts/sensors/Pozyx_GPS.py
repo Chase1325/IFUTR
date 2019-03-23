@@ -90,9 +90,9 @@ class IPozyx(object):
             if status == POZYX_SUCCESS:
                 success=True
                 #self.pose.timestamp = datetime.datetime.now()
-                self.pose.Point.x = position.x
-                self.pose.Point.y = position.y
-                self.pose.Point.z = self.height
+                self.pose.pose.x = position.x
+                self.pose.pose.y = position.y
+                self.pose.pose.z = self.height
                 self.pub.publish(self.pose)
             else:
                 pass

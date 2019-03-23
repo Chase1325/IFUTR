@@ -90,9 +90,11 @@ class IPozyx(object):
             if status == POZYX_SUCCESS:
                 success=True
                 #self.pose.timestamp = datetime.datetime.now()
+                self.pose.header.stamp = rospy.Time.now()
                 self.pose.pose.position.x = position.x
                 self.pose.pose.position.y = position.y
                 self.pose.pose.position.z = self.height
+                self.pose.orientation.w = 1.0
                 self.pub.publish(self.pose)
             else:
                 pass

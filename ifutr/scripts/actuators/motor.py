@@ -32,6 +32,7 @@ while 1:
         GPIO.output(sig2_pin_r, GPIO.LOW)
 
         i+=1
+        print('turn')
 
     i=0
     while(i<15):
@@ -41,3 +42,4 @@ while 1:
         GPIO.output(sig2_pin_r, GPIO.LOW)
 
         i+=1
+        print('go straight')

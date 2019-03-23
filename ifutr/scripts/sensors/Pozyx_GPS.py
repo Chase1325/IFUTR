@@ -91,6 +91,7 @@ class IPozyx(object):
                 success=True
                 #self.pose.timestamp = datetime.datetime.now()
                 self.pose.header.stamp = rospy.Time.now()
+                self.pose.header.frame_id = 'map'
                 self.pose.pose.position.x = position.x
                 self.pose.pose.position.y = position.y
                 self.pose.pose.position.z = self.height

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-import time as time
+from time import sleep
+import datetime
 
 from pypozyx import (POZYX_POS_ALG_UWB_ONLY, POZYX_3D, Coordinates, POZYX_SUCCESS, PozyxConstants, version, DeviceCoordinates, PozyxSerial, get_first_pozyx_serial_port, SingleRegister, DeviceList, PozyxRegisters)
 #from pythonosc.udp_client import SimpleUDPClient
@@ -87,7 +88,7 @@ class IPozyx(object):
                 #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
             if status == POZYX_SUCCESS:
                 success=True
-                self.pose.timestamp = time.now()
+                self.pose.timestamp = datetime.datetime.now()
                 self.pose.posx = position.x
                 self.pose.posy = position.y
                 self.pose.posz = self.height

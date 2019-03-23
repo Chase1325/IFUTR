@@ -33,6 +33,7 @@ while 1:
 
         i+=1
 
+    i=0
     while(i<15):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)

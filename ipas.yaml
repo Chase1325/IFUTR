@@ -1,3 +1,6 @@
+lightswitch: true
+mode: Ground_Test
+
 anchorpose:
   '0x6110': [0, 0, 1455]
   '0x6115': [0, 3000, 2587]
@@ -5,14 +8,25 @@ anchorpose:
   '0x611e': [3000, 0, 1057]
   count: 4
   size: 3000
-dronecount: 1
-grid: {height: 5000, width: 5000}
-lightswitch: true
+
+grid: {height: 3000, width: 3000}
+
+drone:
+  'count': 1
+  'state': idle
+
+ugv:
+  'count': 1
+  'state': idle
+  'x-waypoints': [1000, 1000, 2000, 1500]
+  'y-waypoints': [1000, 2000, 2000, 1500]
+
 localize_test:
   reconfig: false
   sample: false
   testLocale: [2500, 4500, 10]
-mode: Flight_Test
+
+
 rosdistro: 'kinetic
 
   '
@@ -23,4 +37,3 @@ rosversion: '1.12.14
 
   '
 run_id: 75405c32-24cf-11e9-acef-0028f85b896a
-ugvcount: 0

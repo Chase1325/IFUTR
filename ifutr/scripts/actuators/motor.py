@@ -40,7 +40,10 @@ while 1:
         i+=1
         time.sleep(.1)
         print('go straight')
-
+    GPIO.output(sig1_pin_l, GPIO.LOW)
+    GPIO.output(sig2_pin_l, GPIO.LOW)
+    GPIO.output(sig1_pin_r, GPIO.LOW)
+    GPIO.output(sig2_pin_r, GPIO.LOW)
     time.sleep(3)
 
     j=0
@@ -65,6 +68,10 @@ while 1:
         time.sleep(.1)
         print('go straight')
 
+    GPIO.output(sig1_pin_l, GPIO.LOW)
+    GPIO.output(sig2_pin_l, GPIO.LOW)
+    GPIO.output(sig1_pin_r, GPIO.LOW)
+    GPIO.output(sig2_pin_r, GPIO.LOW)
     time.sleep(3)
 
     j=0

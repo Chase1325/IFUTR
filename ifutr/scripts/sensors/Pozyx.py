@@ -87,10 +87,10 @@ class IPozyx(object):
                 #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
             if status == POZYX_SUCCESS:
                 success=True
-
+                self.pose.timestamp = time.now()
                 self.pose.posx = position.x
                 self.pose.posy = position.y
-                #self.pose.posz = self.height
+                self.pose.posz = self.height
                 self.pub.publish(self.pose)
             else:
                 pass

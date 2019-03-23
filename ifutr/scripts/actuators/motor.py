@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import RPi.GPIO as GPIO
+import time as time
 
 GPIO.setmode(GPIO.BOARD)
 pwm_pin_r=37
@@ -27,19 +28,21 @@ while 1:
     pwm_l.ChangeDutyCycle(100)
     pwm_r.ChangeDutyCycle(100)
     i=0
-    while(i<1500):
+    while(i<15):
         GPIO.output(sig1_pin_r, GPIO.HIGH)
         GPIO.output(sig2_pin_r, GPIO.LOW)
 
         i+=1
+        time.sleep(0.1)
         print('turn')
 
     i=0
-    while(i<150):
+    while(i<10):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
         GPIO.output(sig1_pin_r, GPIO.HIGH)
         GPIO.output(sig2_pin_r, GPIO.LOW)
 
         i+=1
+        time.sleep(.1)
         print('go straight')

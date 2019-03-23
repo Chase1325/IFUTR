@@ -9,6 +9,7 @@ from pypozyx.tools.version_check import perform_latest_version_check
 
 import rospy
 from std_msgs.msg import Int16
+from geometry_msgs.msg import PoseStamped
 from ifutr.msg import Pozyx_Pose
 
 class IPozyx(object):
@@ -48,8 +49,8 @@ class IPozyx(object):
         self.dimension = PozyxConstants.DIMENSION_3D
         self.height = 1000
 
-        self.pub = rospy.Publisher('pose', Pozyx_Pose, queue_size=10)
-        self.pose = Pozyx_Pose()
+        self.pub = rospy.Publisher('/mavros/fake_gps/mocap/pose', PoseStamped, queue_size=10)
+        self.pose = PoseStamped()
 
         self.subZ = rospy.Subscriber('range', Int16, self.rangeCallback)
 
@@ -88,10 +89,10 @@ class IPozyx(object):
                 #position, self.dimension, self.height, self.algorithm, remote_id=self.remote_id)
             if status == POZYX_SUCCESS:
                 success=True
-                self.pose.timestamp = datetime.datetime.now()
-                self.pose.posx = position.x
-                self.pose.posy = position.y
-                self.pose.posz = self.height
+                #self.pose.timestamp = datetime.datetime.now()
+                self.pose.x = position.x
+                self.pose.y = position.y
+                self.pose.z = self.height
                 self.pub.publish(self.pose)
             else:
                 pass

@@ -19,4 +19,4 @@ while 1:
     #while i<15:
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
-        #pwm.ChangeDutyCycle(min(abs(15),100))
+        pwm.ChangeDutyCycle(100)

@@ -15,7 +15,7 @@ class Fake_GPS(object):
     def __init__(self):
         self.r = rospy.Rate(5)
         self.pub = rospy.Publisher('/mavros/fake_gps/mocap/pose', PoseStamped, queue_size=10)
-        self.sub = rospy.Subscriber('/pose', PoseStamped, poseCallback)
+        self.sub = rospy.Subscriber('/pose', PoseStamped, self.poseCallback)
         self.gps = PoseStamped()
 
 

@@ -20,8 +20,9 @@ class Fake_GPS(object):
 
 
     def poseCallback(self, msg):
+        self.gps.header.
         self.gps = msg
-        print(self.gps)
+        #print(self.gps)
 
 
     def run(self):

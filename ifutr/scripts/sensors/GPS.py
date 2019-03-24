@@ -12,7 +12,7 @@ from ifutr.msg import Pozyx_Pose
 
 class Fake_GPS(object):
 
-    def __init__(self, anchors):
+    def __init__(self):
         self.r = rospy.Rate(5)
         self.pub = rospy.Publisher('/mavros/fake_gps/mocap/pose', PoseStamped, queue_size=10)
         self.sub = rospy.Subscriber('/pose', PoseStamped, poseCallback)
@@ -37,4 +37,5 @@ def initialize():
 
 if __name__ == "__main__":
     initialize()
-    run()
+    g = Fake_GPS()
+    g.run()

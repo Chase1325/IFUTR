@@ -33,7 +33,7 @@ class Fake_GPS(object):
             #self.pose.pose.position.y = position.y
             self.gps.pose.position.x = 1.5
             self.gps.pose.position.y = 1.5
-            self.gps.pose.position.z = self.height
+            self.gps.pose.position.z = 1.5
             self.gps.pose.orientation.w = 1.0
             self.pub.publish(self.gps)
             self.r.sleep()

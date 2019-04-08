@@ -63,7 +63,7 @@ class IPozyx(object):
             self.height = 0
         elif(msg.data==30):
             self.height = 0
-        else
+        else:
             self.height = msg.data
 
     def run(self, height):

@@ -49,7 +49,7 @@ class IPozyx(object):
         self.dimension = PozyxConstants.DIMENSION_3D
         self.height = 1000
 
-        self.pub = rospy.Publisher('/pose', PoseStamped, queue_size=10)
+        self.pub = rospy.Publisher('/mavros/mocap/pose', PoseStamped, queue_size=10)
         self.pose = PoseStamped()
 
         self.subZ = rospy.Subscriber('range', Int16, self.rangeCallback)
@@ -64,7 +64,8 @@ class IPozyx(object):
         elif(msg.data==30):
             self.height = 0
         else:
-            self.height = msg.data
+            self.height = msg.data                #sleep(0.025)
+
 
     def run(self, height):
         """Performs positioning and displays/exports the results."""

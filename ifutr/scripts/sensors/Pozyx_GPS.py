@@ -59,9 +59,12 @@ class IPozyx(object):
         #self.printPublishConfigurationResult()
 
     def rangeCallback(self, msg):
-        self.height = msg.data
-        #print(self.height)
-        #rospy.spin()
+        if(msg.data==500):
+            self.height = 0
+        elif(msg.data==30):
+            self.height = 0
+        else
+            self.height = msg.data
 
     def run(self, height):
         """Performs positioning and displays/exports the results."""
@@ -92,10 +95,10 @@ class IPozyx(object):
                 #self.pose.timestamp = datetime.datetime.now()
                 self.pose.header.stamp = rospy.Time.now()
                 self.pose.header.frame_id = 'map'
-                #self.pose.pose.position.x = position.x
-                #self.pose.pose.position.y = position.y
-                self.pose.pose.position.x = 1.5
-                self.pose.pose.position.y = 1.5
+                self.pose.pose.position.x = position.x
+                self.pose.pose.position.y = position.y
+                #self.pose.pose.position.x = 1.5
+                #self.pose.pose.position.y = 1.5
                 self.pose.pose.position.z = self.height
                 self.pose.pose.orientation.w = 1.0
                 self.pub.publish(self.pose)

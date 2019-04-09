@@ -15,12 +15,11 @@ class Fake_GPS(object):
     def __init__(self):
         self.r = rospy.Rate(5)
         self.pub = rospy.Publisher('/mavros/mocap/pose', PoseStamped, queue_size=10)
-        #self.sub = rospy.Subscriber('/pose', PoseStamped, self.poseCallback)
+        self.sub = rospy.Subscriber('/pose', PoseStamped, self.poseCallback)
         self.gps = PoseStamped()
 
 
     def poseCallback(self, msg):
-
         self.gps = msg
         #print(self.gps)
 
@@ -31,9 +30,10 @@ class Fake_GPS(object):
             self.gps.header.frame_id = 'map'
             #self.pose.pose.position.x = position.x
             #self.pose.pose.position.y = position.y
-            self.gps.pose.position.x = 1.5
-            self.gps.pose.position.y = 1.5
-            self.gps.pose.position.z = 1.5
+            #self.pose.pose.position.z = position.z
+            #self.gps.pose.position.x = 1.5
+            #self.gps.pose.position.y = 1.5
+            #self.gps.pose.position.z = 1.5
             self.gps.pose.orientation.w = 1.0
             self.pub.publish(self.gps)
             self.r.sleep()

@@ -66,7 +66,7 @@ while 1:
     #time.sleep(3)
 
     i=0
-    pwm_l.ChangeDutyCycle(80)
+    pwm_l.ChangeDutyCycle(75)
     pwm_r.ChangeDutyCycle(99)
 
     while(i<125):

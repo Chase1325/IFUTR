@@ -27,8 +27,8 @@ GPIO.setup(sig2_pin_r, GPIO.OUT)
 while 1:
 
 
-    pwm_l.ChangeDutyCycle(75)
-    pwm_r.ChangeDutyCycle(75)
+    pwm_l.ChangeDutyCycle(100)
+    pwm_r.ChangeDutyCycle(100)
 
     i=0
     while(i<150):
@@ -44,7 +44,7 @@ while 1:
     GPIO.output(sig2_pin_l, GPIO.LOW)
     GPIO.output(sig1_pin_r, GPIO.LOW)
     GPIO.output(sig2_pin_r, GPIO.LOW)
-    
+
 
     i=0
     pwm_l.ChangeDutyCycle(74)

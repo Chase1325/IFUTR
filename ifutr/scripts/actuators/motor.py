@@ -48,7 +48,7 @@ while 1:
 
     i=0
     pwm_l.ChangeDutyCycle(90)
-    pwm_r.ChangeDutyCycle(85)
+    pwm_r.ChangeDutyCycle(80)
 
     while(i<200):
         GPIO.output(sig1_pin_l, GPIO.HIGH)

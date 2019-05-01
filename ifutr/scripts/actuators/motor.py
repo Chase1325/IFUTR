@@ -27,11 +27,11 @@ GPIO.setup(sig2_pin_r, GPIO.OUT)
 while 1:
 
 
-    pwm_l.ChangeDutyCycle(100)
+    pwm_l.ChangeDutyCycle(99)
     pwm_r.ChangeDutyCycle(100)
 
     i=0
-    while(i<150):
+    while(i<15):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
         GPIO.output(sig2_pin_l, GPIO.LOW)
         GPIO.output(sig1_pin_r, GPIO.HIGH)
@@ -47,8 +47,27 @@ while 1:
 
 
     i=0
-    pwm_l.ChangeDutyCycle(74)
-    pwm_r.ChangeDutyCycle(75)
+    pwm_l.ChangeDutyCycle(100)
+    pwm_r.ChangeDutyCycle(100)
+
+    while(i<150):
+        GPIO.output(sig1_pin_l, GPIO.HIGH)
+        GPIO.output(sig2_pin_l, GPIO.LOW)
+        GPIO.output(sig1_pin_r, GPIO.HIGH)
+        GPIO.output(sig2_pin_r, GPIO.LOW)
+
+        i+=1
+        time.sleep(.1)
+        print('go straight')
+    GPIO.output(sig1_pin_l, GPIO.LOW)
+    GPIO.output(sig2_pin_l, GPIO.LOW)
+    GPIO.output(sig1_pin_r, GPIO.LOW)
+    GPIO.output(sig2_pin_r, GPIO.LOW)
+    time.sleep(3)
+
+    i=0
+    pwm_l.ChangeDutyCycle(95)
+    pwm_r.ChangeDutyCycle(100)
 
     while(i<150):
         GPIO.output(sig1_pin_l, GPIO.HIGH)
